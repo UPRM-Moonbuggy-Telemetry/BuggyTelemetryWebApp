@@ -7,6 +7,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { GpsComponent } from './components/dashboard/gps/gps.component';
 import { VideoComponent } from './components/dashboard/video/video.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { VideoComponent } from './components/dashboard/video/video.component';
     DashboardComponent,
     GraphsComponent,
     GpsComponent,
-    VideoComponent
+    VideoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
