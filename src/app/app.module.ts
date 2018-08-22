@@ -8,6 +8,10 @@ import { GraphsComponent } from './components/graphs/graphs.component';
 import { GpsComponent } from './components/dashboard/gps/gps.component';
 import { VideoComponent } from './components/dashboard/video/video.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { StatusBarComponent } from './components/status-bar/status-bar.component';
+import { BatteryComponent } from './components/status-bar/battery/battery.component';
+import { DateComponent } from './components/status-bar/date/date.component';
+import { SignalComponent } from './components/status-bar/signal/signal.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FooterComponent } from './components/footer/footer.component';
     GraphsComponent,
     GpsComponent,
     VideoComponent,
-    FooterComponent
+    FooterComponent,
+    StatusBarComponent,
+    BatteryComponent,
+    DateComponent,
+    SignalComponent
   ],
   imports: [
     BrowserModule
