@@ -2,7 +2,7 @@
       padding-top: 15px;
       padding-bottom: 15px;
       padding-left: 15px;
-      background-color: #00ff00;
+      background-color: #000000;
       border-radius: 15px;
       border-style: double;
       border-color: #fffff;
@@ -35,33 +35,3 @@
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
     }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {background-color: #ddd;}
-
-    .dropdown:hover .dropdown-content {display: block;}
-
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-    .top-row{
-        background-color: #00ff00;
-        text-align: center;
-        padding:5px;
-    }
-
-    .row.no-gutter {
-	  margin-left: 0;
-	  margin-right: 0;
-		}
-
-	.row.no-gutter [class*='col-']:not(:first-child),
-	.row.no-gutter [class*='col-']:not(:last-child) {
-	  padding-right: 0;
-	  padding-left: 0;
-	}
