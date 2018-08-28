@@ -2,7 +2,7 @@
       padding-top: 15px;
       padding-bottom: 15px;
       padding-left: 15px;
-      background-color: #000000;
+      background-color: #87ceeb;
       /* border-radius: 15px; */
       border-style: double;
       border-color: #fffff;
@@ -10,11 +10,58 @@
 
     .navbar-right{
       float: right;
-      padding-right: 45px;
+      padding-right: 90px;
     }
 
+    /*.dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }*/
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: red;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #B8B4B4;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #B8B4B4;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+
     .dropbtn {
-      background-color: #00ff00;
+      background-color: #778899;
         color: black;
         padding: 16px;
         font-size: 16px;
@@ -37,10 +84,17 @@
     }
 
     h2{
-      color: white;
+      color: black;
+      padding-left: 15px;
+      padding-right: 45px;
     }
 
-    h6{
-      color: white;
-      font-size: 10px;
+    h5{
+      color: black;
+      padding-left: 15px;
+    }
+
+    .logo{
+      padding-right: 50px;
+
     }
