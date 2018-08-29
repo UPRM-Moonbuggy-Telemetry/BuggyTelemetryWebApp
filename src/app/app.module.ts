@@ -12,7 +12,7 @@ import { StatusBarComponent } from './components/status-bar/status-bar.component
 import { BatteryComponent } from './components/status-bar/battery/battery.component';
 import { DateComponent } from './components/status-bar/date/date.component';
 import { SignalComponent } from './components/status-bar/signal/signal.component';
-import { BuggysComponent } from './components/buggys/buggys.component';
+import { BuggysComponent } from './components/dashboard/buggys/buggys.component';
 
 @NgModule({
   declarations: [
