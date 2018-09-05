@@ -1,8 +1,8 @@
 <div class="row full-width">
   <div class="col" id="ch1">
-    <p class="segment">
-      Chart 1
-    </p>
+    <div *ngIf="chart">
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
   </div>
 
   <div class="col" id="ch2">
