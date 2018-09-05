@@ -1,3 +1,26 @@
-<p>
-  graphs works!
-</p>
+<div class="row full-width">
+  <div class="col" id="ch1">
+    <div *ngIf="chart">
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+  </div>
+
+  <div class="col" id="ch2">
+    <p class="segment">
+      Chart 2
+    </p>
+  </div>
+</div>
+<div class="row full-width">
+  <div class="col" id="ch3">
+    <p class="segment">
+      Chart 3
+    </p>
+  </div>
+
+  <div class="col" id="ch4">
+    <p class="segment">
+      Chart 4
+    </p>
+  </div>
+</div>
