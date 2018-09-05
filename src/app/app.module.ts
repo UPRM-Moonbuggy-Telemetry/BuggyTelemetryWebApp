@@ -35,7 +35,7 @@ import { BuggysComponent } from './components/dashboard/buggys/buggys.component'
     BrowserModule,
     HttpClientModule
   ],
-  providers: [WeatherService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
