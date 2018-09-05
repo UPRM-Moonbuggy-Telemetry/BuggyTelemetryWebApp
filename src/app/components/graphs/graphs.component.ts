@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-graphs',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./graphs.component.css']
 })
 export class GraphsComponent implements OnInit {
+  chart = []; // This will hold our chart info
 
-  constructor() { }
+    constructor(private _weather: WeatherService) {}
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+      this._weather.dailyForecast()
+        .subscribe(res => {
+          console.log(res)
+        })
+    }
 }
