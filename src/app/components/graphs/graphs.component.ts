@@ -69,28 +69,46 @@ export class GraphsComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    this.chart = this.chartBuilder(this.canvas, [1,2,3,4,5], [1,2,3,4,5])
+    this.chart = this.chartBuilder(this.canvas, [1,2,3,4,5], [
+      {
+        data: [123,345,567,789,890],
+        borderColor: "#17dd44",
+        fill: false
+      }
+    ]);
 
-    this.chart2 = this.chartBuilder(this.canvas2, [2,3,4,5,7], [1,2,3,4,5])
+    this.chart2 = this.chartBuilder(this.canvas2, [2,3,4,5,7], [
+      {
+        data: [4,5,6,7,7],
+        borderColor: "#9017e4",
+        fill: false
+      }
+    ]);
+
+    this.chart3 = this.chartBuilder(this.canvas3, [1,2,3,4,5], [
+      {
+        data: [23,4,6,2,5],
+        borderColor: "#dad823",
+        fill: false
+      }
+    ]);
+
+    this.chart4 = this.chartBuilder(this.canvas4, [1,2,3,4,5], [
+      {
+        data: [345,54,6,23,56],
+        borderColor: "#3c17e4",
+        fill: false
+      }
+    ]);
   }
 
-  chartBuilder(element, xData, yData, dataset?){
+  chartBuilder(element, xData, yDataset){
 
-    if(!dataset){
-      dataset = [
-        {
-          data: yData,
-          borderColor: "#3cba9f",
-          fill: false
-        }
-      ]
-    }
-    
     return new Chart(element.nativeElement.getContext('2d'), {
       type: 'line',
       data: {
         labels:xData,
-        datasets: dataset
+        datasets: yDataset
       },
       options: {
         legend: {
