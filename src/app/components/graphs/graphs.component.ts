@@ -11,6 +11,8 @@ export class GraphsComponent implements OnInit {
   @ViewChild('canvas') canvas: ElementRef;
 
   chart = []; // This will hold our chart info
+  chart2 = []; // This will hold our chart2 info
+  chart3 = []; // This will hold our chart3 info
 
   constructor(private _weather: DataService) {}
 
