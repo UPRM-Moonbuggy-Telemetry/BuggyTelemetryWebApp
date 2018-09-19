@@ -1,26 +1,22 @@
-<div class="row full-width">
-  <div class="col" id="ch1">
-    <div *ngIf="chart">
+<div class="row">
+  <div class="col-xl-6" id="ch1">
       <p class="segment">
         <canvas #canvas id="canvas">{{ chart }}</canvas>
       </p>
-    </div>
   </div>
 
-  <div class="col" id="ch2">
+  <div class="col-xl-6" id="ch2">
     <p class="segment">
       <canvas #canvas2 id="canvas">{{ chart2 }}</canvas>
     </p>
   </div>
-</div>
-<div class="row full-width">
-  <div class="col" id="ch3">
+
+  <div class="col-xl-6" id="ch3">
     <p class="segment">
       <canvas #canvas3 id="canvas">{{ chart3 }}</canvas>
     </p>
   </div>
-
-  <div class="col" id="ch4">
+  <div class="col-xl-6" id="ch4">
     <p class="segment">
       <canvas #canvas4 id="canvas">{{ chart4 }}</canvas>
      </p>
