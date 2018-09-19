@@ -9,10 +9,14 @@ import { Chart } from 'chart.js';
 })
 export class GraphsComponent implements OnInit {
   @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild('canvas2') canvas2: ElementRef;
+  @ViewChild('canvas3') canvas3: ElementRef;
+  @ViewChild('canvas4') canvas4: ElementRef;
 
   chart = []; // This will hold our chart info
   chart2 = []; // This will hold our chart2 info
   chart3 = []; // This will hold our chart3 info
+  chart4 = []; // This will hold our chart3 info
 
   constructor(private _weather: DataService) {}
 
@@ -65,22 +69,28 @@ export class GraphsComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
+    this.chart = this.chartBuilder(this.canvas, [1,2,3,4,5], [1,2,3,4,5])
+
+    this.chart2 = this.chartBuilder(this.canvas2, [2,3,4,5,7], [1,2,3,4,5])
+  }
+
+  chartBuilder(element, xData, yData, dataset?){
+
+    if(!dataset){
+      dataset = [
+        {
+          data: yData,
+          borderColor: "#3cba9f",
+          fill: false
+        }
+      ]
+    }
+    
+    return new Chart(element.nativeElement.getContext('2d'), {
       type: 'line',
       data: {
-        labels:[345,345,3456,3456,3456,345,2345,234],
-        datasets: [
-          {
-            data: [123,1234,25,345,35,456435,6],
-            borderColor: "#3cba9f",
-            fill: false
-          },
-          {
-            data: [234,345,435,346,456,457,7,567],
-            borderColor: "#ffcc00",
-            fill: false
-          },
-        ]
+        labels:xData,
+        datasets: dataset
       },
       options: {
         legend: {
