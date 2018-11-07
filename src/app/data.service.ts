@@ -10,6 +10,10 @@ export interface Cat {
 @Injectable({
   providedIn: 'root'
 })
+
+//this class takes care of all data api calls
+//if we add another API (images, for example) we should create a new service called ImagesService
+//or whichever name is appropriate for the API
 export class DataService {
 
   constructor(private _http: HttpClient) { }

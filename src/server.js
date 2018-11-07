@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
-const routes = require('./api/routes/dataRoutes');//importing routes
+const dataRoutes = require('./api/routes/dataRoutes');//importing routes
 
 const app = express();//init express
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 //TODO add database connections
 
-routes(app);//register the route
+dataRoutes(app);//register the route
 //send angular file to path (has to be built first with ng build)
 app.get('/*', (req,res) => res.sendFile(path.join(__dirname)));
 
