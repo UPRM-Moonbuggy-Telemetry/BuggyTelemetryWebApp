@@ -7,6 +7,8 @@ module.exports = function(app) {
 
   app.route('/api/data/:id')
     .get(data.getId)
-    .put(data.updateId)
     .delete(data.removeId);
+
+  app.route('/api/data/:id/:name')
+    .put(data.updateId);
 }
