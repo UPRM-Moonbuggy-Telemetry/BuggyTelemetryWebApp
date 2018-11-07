@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 
 //TODO add database connections
 
-routes(app);//reguster the route
-//send angular file to path (has to be built)
+routes(app);//register the route
+//send angular file to path (has to be built first with ng build)
 app.get('/*', (req,res) => res.sendFile(path.join(__dirname)));
 
 //server creation

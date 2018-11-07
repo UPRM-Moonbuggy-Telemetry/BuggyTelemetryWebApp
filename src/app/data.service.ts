@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+export interface Cat {
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,12 +14,24 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  //TODO change this function and replace with mock JSON data
-  dailyForecast() {
-    // return this._http.get("http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22")
-    //   .pipe(map(result => result));
+  getAllCats(): Observable<Cat[]> {
+    return this._http.get<Cat[]>('http://localhost:3000/api/data');
+  }
 
-    return
+  getCat(name: string): Observable<Cat> {
+    return this._http.get<Cat>('http://localhost:3000/api/data/' + name);
+  }
+
+  insertCat(cat: Cat): Observable<Cat> {
+    return this._http.post<Cat>('http://localhost:3000/api/data/', cat);
+  }
+
+  updateCat(cat: Cat): Observable<void> {
+    return this._http.put<void>('http://localhost:3000/api/data/' + cat.name, cat);
+  }
+
+  deleteCat(name: string) {
+    return this._http.delete('http://localhost:3000/api/data/' + name);
   }
 
 }
