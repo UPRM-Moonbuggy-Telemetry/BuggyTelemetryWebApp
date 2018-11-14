@@ -23,6 +23,7 @@
     "bootstrap": "^4.1.1",
     "chart.js": "^2.7.2",
     "core-js": "^2.5.4",
+    "lodash": "^4.17.11",
     "mysql": "^2.16.0",
     "ngx-bootstrap": "^2.0.5",
     "rxjs": "^6.0.0",

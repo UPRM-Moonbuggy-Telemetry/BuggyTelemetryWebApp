@@ -1,4 +1,5 @@
 const db = require('../models/dataModel.js');
+const _ = require('lodash');
 
 exports.getAll = function(req, res) {
   //query the DB using prepared statement
@@ -19,6 +20,17 @@ exports.getAll = function(req, res) {
 };
 
 exports.addData = function(req, res) {
+  var sql = "INSERT INTO sensorData (strain, vibracion) VALUES ?";
+  var values = [];
+
+  _.forEach(req.body, function(value) {
+    values.push([value.strain, value.vibracion]);
+  });
+
+  db.query(sql, [values], function (err, result) {
+    if (err) throw err;
+    console.log("Number of records inserted: " + result.affectedRows);
+  });
   res.send(201, req.body);
 };
 

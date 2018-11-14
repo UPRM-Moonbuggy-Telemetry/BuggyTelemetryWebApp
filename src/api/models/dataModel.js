@@ -13,7 +13,7 @@ con.connect(function(err) {
   console.log("Connected!");
   var sql = "CREATE TABLE sensorData (id INT AUTO_INCREMENT PRIMARY KEY, strain INT, vibracion INT)";
   con.query(sql, function (err, result) {
-    if (err) throw err;
+    if (err) console.log("table already exists");
     console.log("Table created");
   });
 });
