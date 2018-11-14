@@ -16,21 +16,22 @@ exports.getAll = function(req, res) {
     //send JSON to Express
     res.send(resultJson);
   });
+};
 
-  exports.addData = function(req, res) {
-    res.send(201, req.body);
-  };
+exports.addData = function(req, res) {
+  res.send(201, req.body);
+};
 
-  exports.getId = function(req, res) {
-    const requestedName = req.params['name'];
-    //for the purpose of this test we only return the name in a new object
-    res.send({ name: requestedName });
-  };
+exports.getId = function(req, res) {
+  const requestedName = req.params['name'];
+  //for the purpose of this test we only return the name in a new object
+  res.send({ name: requestedName });
+};
 
-  exports.updateId = function(req, res){
-    res.send(201, req.body);
-  };
+exports.updateId = function(req, res){
+  res.send(201, req.body);
+};
 
-  exports.removeId = function(req, res){
-    res.sendStatus(204);
-  };
+exports.removeId = function(req, res){
+  res.sendStatus(204);
+};
