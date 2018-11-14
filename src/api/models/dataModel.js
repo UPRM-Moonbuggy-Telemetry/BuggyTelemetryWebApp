@@ -8,6 +8,7 @@ var con = mysql.createConnection({
   database: "buggyDB"
 });
 
+//create table if it doesnt exist
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
