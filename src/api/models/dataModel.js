@@ -1,11 +1,11 @@
-// TODO models for the database
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
+  port: "3030",
   user: "yourusername",
   password: "yourpassword",
-  database: "mydb"
+  database: "buggyDB"
 });
 
 con.connect(function(err) {
@@ -17,3 +17,5 @@ con.connect(function(err) {
     console.log("Table created");
   });
 });
+
+module.exports = con;
