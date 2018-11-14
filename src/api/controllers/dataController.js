@@ -28,7 +28,7 @@ exports.addData = function(req, res) {
   });
 
   db.query(sql, [values], function (err, result) {
-    if (err) throw err;
+    if (err) req.send(500, req.body);
     console.log("Number of records inserted: " + result.affectedRows);
   });
   res.send(201, req.body);
