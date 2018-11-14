@@ -11,7 +11,7 @@ var con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  var sql = "CREATE TABLE sensorData (id INT AUTO_INCREMENT_KEY, strain INT, vibracion INT)";
+  var sql = "CREATE TABLE sensorData (id INT AUTO_INCREMENT PRIMARY KEY, strain INT, vibracion INT)";
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");

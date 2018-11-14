@@ -3,6 +3,7 @@ const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
 const dataRoutes = require('./api/routes/dataRoutes');//importing routes
+const db = require('./api/models/dataModel.js');//db modee
 
 const app = express();//init express
 
