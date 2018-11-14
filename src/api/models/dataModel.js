@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  port: "3030",
-  user: "yourusername",
-  password: "yourpassword",
+  // port: "3030",
+  user: "root",
+  password: "1234",
   database: "buggyDB"
 });
 
