@@ -6,6 +6,12 @@ export interface Cat {
   name: string;
 }
 
+export interface TestData {
+  strain: int;
+  vibracion: int;
+  id: int;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,24 +23,24 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  getAllCats(): Observable<Cat[]> {
-    return this._http.get<Cat[]>('http://localhost:3000/api/data');
+  getAllData(): Observable<TestData[]> {
+    return this._http.get<TestData[]>('http://localhost:3000/api/data');
   }
 
-  getCat(name: string): Observable<Cat> {
-    return this._http.get<Cat>('http://localhost:3000/api/data/' + name);
+  getData(id: int): Observable<TestData> {
+    return this._http.get<TestData>('http://localhost:3000/api/data/' + id);
   }
 
-  insertCat(cat: Cat): Observable<Cat> {
-    return this._http.post<Cat>('http://localhost:3000/api/data/', cat);
+  insertData(data: TestData): Observable<TestData> {
+    return this._http.post<TestData>('http://localhost:3000/api/data/', data);
   }
 
-  updateCat(cat: Cat): Observable<void> {
-    return this._http.put<void>('http://localhost:3000/api/data/' + cat.name, cat);
+  updateData(data: TestData): Observable<void> {
+    return this._http.put<void>('http://localhost:3000/api/data/' + TestData.id, data);
   }
 
-  deleteCat(name: string) {
-    return this._http.delete('http://localhost:3000/api/data/' + name);
+  deleteCat(id: int) {
+    return this._http.delete('http://localhost:3000/api/data/' + id);
   }
 
 }
