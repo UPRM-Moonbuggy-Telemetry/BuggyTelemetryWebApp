@@ -7,8 +7,7 @@ exports.getAll = function(req, res) {
   var results = db.query('SELECT * from sensorData', function (error, results, fields) {
     //if error, print blank results
     if (error) {
-      var apiResult = {};
-      res.send(apiResult);
+      res.send(404, req.body);
     }
 
     //make results
@@ -30,7 +29,7 @@ exports.addData = function(req, res) {
   });
 
   db.query(sql, [values], function (err, result) {
-    if (err) req.send(500, req.body);
+    if (err) res.send(500, req.body);
     console.log("Number of records inserted: " + result.affectedRows);
   });
   res.send(201, req.body);
@@ -38,17 +37,43 @@ exports.addData = function(req, res) {
 
 //gets specific row from DB
 exports.getId = function(req, res) {
-  const requestedName = req.params['name'];
-  //for the purpose of this test we only return the name in a new object
-  res.send({ name: requestedName });
+  const paramId = req.params['id'];
+
+  var sql = 'SELECT * FROM sensorData WHERE id = ?';
+  db.query(sql, [paramId], function (err, result) {
+    if (err) res.send(404, req.body);
+
+    //make results
+    var resultJson = JSON.stringify(results);
+    resultJson = JSON.parse(resultJson);
+
+    //send JSON to Express
+    res.send(resultJson);
+  });
 };
 
 //updates specific row from DB
 exports.updateId = function(req, res){
-  res.send(201, req.body);
+  const paramId = req.params['id'];
+
+  var sql = "UPDATE sensorData SET strain = ?, vibracion = ? WHERE id = ?";
+  con.query(sql, [req.body.strain, req.body.vibracion, paramId],  function (err, result) {
+    if (err) res.send(406, req.body);
+
+    console.log(result.affectedRows + " record(s) updated");
+    res.send(200, req.body);
+  });
 };
 
 //removes row from DB
 exports.removeId = function(req, res){
-  res.sendStatus(204);
+  const paramId = req.params['id'];
+
+  var sql = "DELETE FROM sensorData WHERE id = ?";
+  con.query(sql, [paramId], function (err, result) {
+    if (err) res.sendStatus(404);
+    
+    console.log("Number of records deleted: " + result.affectedRows);
+    res.sendStatus(204);
+  });
 };
