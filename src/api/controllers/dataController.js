@@ -57,7 +57,7 @@ exports.updateId = function(req, res){
   const paramId = req.params['id'];
 
   var sql = "UPDATE sensorData SET strain = ?, vibracion = ? WHERE id = ?";
-  con.query(sql, [req.body.strain, req.body.vibracion, paramId],  function (err, result) {
+  db.query(sql, [req.body.strain, req.body.vibracion, paramId],  function (err, result) {
     if (err) res.send(406, req.body);
 
     console.log(result.affectedRows + " record(s) updated");
@@ -70,9 +70,9 @@ exports.removeId = function(req, res){
   const paramId = req.params['id'];
 
   var sql = "DELETE FROM sensorData WHERE id = ?";
-  con.query(sql, [paramId], function (err, result) {
+  db.query(sql, [paramId], function (err, result) {
     if (err) res.sendStatus(404);
-    
+
     console.log("Number of records deleted: " + result.affectedRows);
     res.sendStatus(204);
   });
