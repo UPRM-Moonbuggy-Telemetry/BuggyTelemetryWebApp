@@ -1,6 +1,7 @@
 const db = require('../models/dataModel.js');
 const _ = require('lodash');
 
+//reads all values from DB
 exports.getAll = function(req, res) {
   //query the DB using prepared statement
   var results = db.query('SELECT * from sensorData', function (error, results, fields) {
@@ -19,6 +20,7 @@ exports.getAll = function(req, res) {
   });
 };
 
+//adds a row to DB
 exports.addData = function(req, res) {
   var sql = "INSERT INTO sensorData (strain, vibracion) VALUES ?";
   var values = [];
@@ -34,16 +36,19 @@ exports.addData = function(req, res) {
   res.send(201, req.body);
 };
 
+//gets specific row from DB
 exports.getId = function(req, res) {
   const requestedName = req.params['name'];
   //for the purpose of this test we only return the name in a new object
   res.send({ name: requestedName });
 };
 
+//updates specific row from DB
 exports.updateId = function(req, res){
   res.send(201, req.body);
 };
 
+//removes row from DB
 exports.removeId = function(req, res){
   res.sendStatus(204);
 };

@@ -1,6 +1,8 @@
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
+//DB has to already exist in server
+//We can later add code to make sure it does and if not we create it
+var db = mysql.createConnection({
   host: "localhost",
   // port: "3030",
   user: "root",
@@ -9,14 +11,14 @@ var con = mysql.createConnection({
 });
 
 //create table if it doesnt exist
-con.connect(function(err) {
+db.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
   var sql = "CREATE TABLE sensorData (id INT AUTO_INCREMENT PRIMARY KEY, strain INT, vibracion INT)";
   con.query(sql, function (err, result) {
     if (err) console.log("table already exists");
-    console.log("Table created");
+    else console.log("Table created");
   });
 });
 
-module.exports = con;
+module.exports = db;

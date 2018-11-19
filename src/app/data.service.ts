@@ -7,9 +7,9 @@ export interface Cat {
 }
 
 export interface TestData {
-  strain: int;
-  vibracion: int;
-  id: int;
+  id: number;
+  strain: number;
+  vibracion: number;
 }
 
 @Injectable({
@@ -23,23 +23,26 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
+  //CRUD operations
   getAllData(): Observable<TestData[]> {
     return this._http.get<TestData[]>('http://localhost:3000/api/data');
   }
 
-  getData(id: int): Observable<TestData> {
+  getData(id: number): Observable<TestData> {
     return this._http.get<TestData>('http://localhost:3000/api/data/' + id);
   }
 
   insertData(data: TestData): Observable<TestData> {
-    return this._http.post<TestData>('http://localhost:3000/api/data/', data);
+    return this._http.post<TestData>('http://localhost:3000/api/data/',
+    {"strain": data.strain, "vibracion": data.vibracion});
   }
 
   updateData(data: TestData): Observable<void> {
-    return this._http.put<void>('http://localhost:3000/api/data/' + TestData.id, data);
+    return this._http.put<void>('http://localhost:3000/api/data/' + data.id,
+    {"strain": data.strain, "vibracion": data.vibracion});
   }
 
-  deleteCat(id: int) {
+  deleteData(id: number) {
     return this._http.delete('http://localhost:3000/api/data/' + id);
   }
 
