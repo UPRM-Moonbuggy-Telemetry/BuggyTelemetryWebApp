@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+To test the back-end portion of the server run `ng build` first. Then run `npm start`. (You should have Nodemon installed on your system `npm install -g nodemon`). Navigate to `http://localhost:3000/` and you can test the requests using this address. App should reload if you change any server files.
+
+If there are changes in the angular files, you run `ng build` again to reload the server.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
