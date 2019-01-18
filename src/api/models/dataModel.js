@@ -1,24 +1,58 @@
 var mysql = require('mysql');
-
-//DB has to already exist in server
-//We can later add code to make sure it does and if not we create it
-var db = mysql.createConnection({
-  host: "localhost",
-  // port: "3030",
+var pool = mysql.createPool({
   user: "root",
-  password: "1234",
-  database: "buggyDB"
+  host: "localhost",
+  database: "buggy_db",
+  password: "root",
+  port: "3306"
 });
 
-//create table if it doesnt exist
-db.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql = "CREATE TABLE sensorData (id INT AUTO_INCREMENT PRIMARY KEY, strain INT, vibracion INT)";
-  con.query(sql, function (err, result) {
-    if (err) console.log("table already exists");
-    else console.log("Table created");
+pool.on('connection', () => {
+  console.log('Connected to the data base.');
+});
+
+/**
+ * This function creates the table with the specified parameters
+ */
+const createTable = () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
+      SensorData (id INT AUTO_INCREMENT PRIMARY KEY,
+      strain INT, vibracion INT)`;
+  pool.query(queryText, function (error, results, fields) {
+    if(error){
+      throw error;
+      pool.end();
+    }
+    console.log("Table created succesfully.")
+    pool.end();
   });
-});
+}
 
-module.exports = db;
+/**
+ * If necessary run this function to delete table
+ */
+const dropTable = () => {
+  const queryText = 'DROP TABLE IF EXISTS SensorData';
+  pool.query(queryText, function (error, results, fields) {
+    if(error){
+      throw error;
+      pool.end();
+    }
+    console.log("Table droped succesfully.")
+    pool.end();
+  });
+}
+
+module.exports = {
+  pool,
+  createTable,
+  dropTable
+};
+
+/**
+  Necessary module to run createTable and dropTable in command line.
+  Steps in the command line:
+    1. cd <your proyect path>/Buggy7thGenTelemetry/src/api/models
+    2. node dataModel <type here the function you want to run>
+ */
+require('make-runnable');
