@@ -1,5 +1,5 @@
-var mysql = require('mysql');
-var pool = mysql.createPool({
+const mysql = require('mysql');
+const pool = mysql.createPool({
   user: "root",
   host: "localhost",
   database: "buggy_db",
