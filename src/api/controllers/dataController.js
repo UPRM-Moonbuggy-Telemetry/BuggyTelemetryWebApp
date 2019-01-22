@@ -44,7 +44,7 @@ exports.getId = function(req, res) {
     if (err) res.send(404, req.body);
 
     //make results
-    var resultJson = JSON.stringify(results);
+    var resultJson = JSON.stringify(result);
     resultJson = JSON.parse(resultJson);
 
     //send JSON to Express
@@ -56,8 +56,8 @@ exports.getId = function(req, res) {
 exports.updateId = function(req, res){
   const paramId = req.params['id'];
 
-  var sql = "UPDATE SensorData SET strain = ?, vibracion = ? WHERE id = ?";
-  db.query(sql, [req.body.strain, req.body.vibracion, paramId],  function (err, result) {
+  var sql = "UPDATE sensorData SET strain = ?, vibracion = ? WHERE id = ?";
+  db.query(sql, [req.body.strain, req.body.vibracion, paramId], function (err, result) {
     if (err) res.send(406, req.body);
 
     console.log(result.affectedRows + " record(s) updated");
