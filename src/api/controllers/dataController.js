@@ -56,7 +56,7 @@ exports.getId = function(req, res) {
 exports.updateId = function(req, res){
   const paramId = req.params['id'];
 
-  var sql = "UPDATE sensorData SET strain = ?, vibracion = ? WHERE id = ?";
+  var sql = "UPDATE SensorData SET strain = ?, vibracion = ? WHERE id = ?";
   db.query(sql, [req.body.strain, req.body.vibracion, paramId], function (err, result) {
     if (err) res.send(406, req.body);
 
