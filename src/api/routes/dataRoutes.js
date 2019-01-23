@@ -1,7 +1,7 @@
 module.exports = function(app) {
   var data = require('../controllers/dataController');
 
-//methods get called depending on reuest type and url
+//methods get called depending on request type and url
   app.route('/api/data')
     .get(data.getAll)
     .post(data.addData);
