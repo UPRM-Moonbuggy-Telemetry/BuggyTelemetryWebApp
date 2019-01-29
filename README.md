@@ -1,5 +1,8 @@
 # BuggyGuiAngularPort
 
+Telemetry system for the UPRM Moonbuggy Engineering team!
+Here we collect a lot of rover data in a Database and visualize it to show the judges
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
 
 ## Development server
