@@ -16,15 +16,15 @@ export class GpsComponent implements OnInit {
   ngOnInit() {
     this.container.nativeElement.style.visibility = "visible";
     var map = new Map(this.parent.nativeElement, this.element.nativeElement, {
-      top: -86.655645,
-      bottom: -86.652185
+      top: 100,
+      bottom: 0
     }, {
-      top: 34.709558,
-      bottom: 34.711180
+      top: 100,
+      bottom: 0
     });
     map.refresh({
-      y: getRndNumber(-86.655645, -86.652185),
-      x: getRndNumber(34.709558,34.711180)
+      y: getRndNumber(0, 100),
+      x: getRndNumber(0, 100)
     });
   }
 
