@@ -14,7 +14,6 @@ export class GpsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.container.nativeElement.style.visibility = "visible";
     var map = new Map(this.parent.nativeElement, this.element.nativeElement, {
       top: 100,
       bottom: 0
