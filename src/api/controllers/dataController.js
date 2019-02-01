@@ -1,10 +1,10 @@
-const db = require('../models/dataModel.js');
+const db = require('../models/dataModel.js').pool;
 const _ = require('lodash');
 
 //reads all values from DB
 exports.getAll = function(req, res) {
   //query the DB using prepared statement
-  var results = db.query('SELECT * from sensorData', function (error, results, fields) {
+  var results = db.query('SELECT * from SensorData', function (error, results, fields) {
     //if error, print blank results
     if (error) {
       res.send(404, req.body);
@@ -21,7 +21,7 @@ exports.getAll = function(req, res) {
 
 //adds a row to DB
 exports.addData = function(req, res) {
-  var sql = "INSERT INTO sensorData (strain, vibracion) VALUES ?";
+  var sql = "INSERT INTO SensorData (strain, vibracion) VALUES ?";
   var values = [];
 
   _.forEach(req.body, function(value) {
@@ -39,12 +39,12 @@ exports.addData = function(req, res) {
 exports.getId = function(req, res) {
   const paramId = req.params['id'];
 
-  var sql = 'SELECT * FROM sensorData WHERE id = ?';
+  var sql = 'SELECT * FROM SensorData WHERE id = ?';
   db.query(sql, [paramId], function (err, result) {
     if (err) res.send(404, req.body);
 
     //make results
-    var resultJson = JSON.stringify(results);
+    var resultJson = JSON.stringify(result);
     resultJson = JSON.parse(resultJson);
 
     //send JSON to Express
@@ -56,8 +56,8 @@ exports.getId = function(req, res) {
 exports.updateId = function(req, res){
   const paramId = req.params['id'];
 
-  var sql = "UPDATE sensorData SET strain = ?, vibracion = ? WHERE id = ?";
-  db.query(sql, [req.body.strain, req.body.vibracion, paramId],  function (err, result) {
+  var sql = "UPDATE SensorData SET strain = ?, vibracion = ? WHERE id = ?";
+  db.query(sql, [req.body.strain, req.body.vibracion, paramId], function (err, result) {
     if (err) res.send(406, req.body);
 
     console.log(result.affectedRows + " record(s) updated");
@@ -69,7 +69,7 @@ exports.updateId = function(req, res){
 exports.removeId = function(req, res){
   const paramId = req.params['id'];
 
-  var sql = "DELETE FROM sensorData WHERE id = ?";
+  var sql = "DELETE FROM SensorData WHERE id = ?";
   db.query(sql, [paramId], function (err, result) {
     if (err) res.sendStatus(404);
 
