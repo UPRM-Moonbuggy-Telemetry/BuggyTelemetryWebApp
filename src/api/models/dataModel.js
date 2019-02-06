@@ -14,10 +14,38 @@ pool.on('connection', () => {
 /**
  * This function creates the table with the specified parameters
  */
-const createTable = () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-      SensorData (id INT AUTO_INCREMENT PRIMARY KEY,
-      strain INT, vibracion INT)`;
+const createTableNewBuggy = () => {
+  const queryText = `CREATE TABLE
+          NewBuggy (id INT AUTO_INCREMENT PRIMARY KEY,
+          strain_sensor_1 INT, strain_sensor_2 INT, strain_sensor_3 INT,
+          strain_sensor_4 INT, vibration_sensor_1 INT, vibration_sensor_2 INT,
+          vibration_sensor_3 INT, vibration_sensor_4 INT, vibration_sensor_5 INT,
+          battery_status INT, latitude DOUBLE, longitude DOUBLE,
+          GSC_time VARCHAR(10), GSC_date VARCHAR(12))`;
+
+      //To-DO : Add humedad, temp, buggy DATETIME(2)
+
+  pool.query(queryText, function (error, results, fields) {
+    if(error){
+      throw error;
+      pool.end();
+    }
+    console.log("Table created succesfully.")
+    pool.end();
+  });
+}
+
+const createTableOldBuggy = () => {
+  const queryText = `CREATE TABLE
+          OldBuggy (id INT AUTO_INCREMENT PRIMARY KEY,
+          strain_sensor_1 INT, strain_sensor_2 INT, strain_sensor_3 INT,
+          strain_sensor_4 INT, vibration_sensor_1 INT, vibration_sensor_2 INT,
+          vibration_sensor_3 INT, vibration_sensor_4 INT, vibration_sensor_5 INT,
+          battery_status INT, latitude DOUBLE, longitude DOUBLE,
+          GSC_time VARCHAR(10), GSC_date VARCHAR(12))`;
+
+      //To-DO : Add humedad, temp, buggy DATETIME(2)
+
   pool.query(queryText, function (error, results, fields) {
     if(error){
       throw error;
@@ -29,10 +57,22 @@ const createTable = () => {
 }
 
 /**
- * If necessary run this function to delete table
+ * If necessary run this functions to delete tables
  */
-const dropTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS SensorData';
+const dropTableNewBuggy = () => {
+  const queryText = 'DROP TABLE IF EXISTS NewBuggy';
+  pool.query(queryText, function (error, results, fields) {
+    if(error){
+      throw error;
+      pool.end();
+    }
+    console.log("Table droped succesfully.")
+    pool.end();
+  });
+}
+
+const dropTableOldBuggy = () => {
+  const queryText = 'DROP TABLE IF EXISTS OldBuggy';
   pool.query(queryText, function (error, results, fields) {
     if(error){
       throw error;
@@ -45,8 +85,10 @@ const dropTable = () => {
 
 module.exports = {
   pool,
-  createTable,
-  dropTable
+  createTableNewBuggy,
+  createTableOldBuggy,
+  dropTableNewBuggy,
+  dropTableOldBuggy
 };
 
 /**
