@@ -1,4 +1,9 @@
-.map{
-  width: 400px;
-  height: 300px;  
+#parent {
+  position: relative !important;
+  height: inherit;
+  width: inherit;
+}
+
+#element {
+  position: absolute !important;
 }
