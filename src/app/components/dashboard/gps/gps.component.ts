@@ -12,17 +12,17 @@ export class GpsComponent implements OnInit {
   @ViewChild('element') element: ElementRef;
   @ViewChild('container') container: ElementRef;
 
-  map = [];
+  map: Map = [];
   constructor() {
   }
 
   ngOnInit() {
     this.map = new Map(this.parent.nativeElement, this.element.nativeElement, {
-      top: -86.655645,
-      bottom: -86.652185
+      top: -86.652185,
+      bottom: -86.655645
     }, {
-      top: 34.709558,
-      bottom: 34.711180
+      top: 34.711180,
+      bottom: 34.709558
     });
     // map.refresh({
     //   y: getRndNumber(-86.655645, -86.652185),
@@ -32,12 +32,12 @@ export class GpsComponent implements OnInit {
 
   ngAfterViewInit(){
     this.map.refresh({
-      y: -86.653,
-      x: 34.71
+      y: -86.652185,
+      x: 34.711180
     });
 
     console.log("y: " + this.element.nativeElement.style.top, ", x: " + this.element.nativeElement.style.left);
-    console.log("Paren top: " + this.parent.nativeElement.style.position + ", Paren height: " + (this.parent.nativeElement.style.top + this.parent.nativeElement.style.height));
+    console.log("Paren top: " + this.parent.nativeElement.style.top + ", Paren height: " + (this.parent.nativeElement.style.top + this.parent.nativeElement.style.height));
   }
 
 }

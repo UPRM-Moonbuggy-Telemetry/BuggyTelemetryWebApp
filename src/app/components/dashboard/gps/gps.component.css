@@ -1,3 +1,5 @@
 #parent {
-  position: inherit !important;
+  position: absolute !important;
+  height: inherit;
+  width: inherit;
 }
