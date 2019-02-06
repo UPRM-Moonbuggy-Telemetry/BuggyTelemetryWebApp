@@ -1,5 +1,9 @@
 #parent {
-  position: absolute !important;
+  position: relative !important;
   height: inherit;
   width: inherit;
+}
+
+#element {
+  position: absolute !important;
 }

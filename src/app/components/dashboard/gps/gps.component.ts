@@ -32,12 +32,12 @@ export class GpsComponent implements OnInit {
 
   ngAfterViewInit(){
     this.map.refresh({
-      y: -86.652185,
-      x: 34.711180
+      y: getRndNumber(-86.655645, -86.652185),
+      x: 34.710
     });
 
-    console.log("y: " + this.element.nativeElement.style.top, ", x: " + this.element.nativeElement.style.left);
-    console.log("Paren top: " + this.parent.nativeElement.style.top + ", Paren height: " + (this.parent.nativeElement.style.top + this.parent.nativeElement.style.height));
+    console.log("y: " + this.element.nativeElement.style.top, ", x: " + this.element.nativeElement.style.left + "\n pos: " + this.element.nativeElement.style.position);
+    console.log("Paren top: " + this.parent.nativeElement.style.top + ", Elem parent top: " + (this.element.nativeElement.parentElement.style.top));
   }
 
 }
