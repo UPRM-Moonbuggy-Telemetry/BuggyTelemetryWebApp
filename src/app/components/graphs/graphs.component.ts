@@ -13,8 +13,6 @@ function randomvar(){
    return values; 
 }
 
-var nums = setInterval(randomvar, 1000);
-
 
 @Component({
   selector: 'app-graphs',
@@ -117,30 +115,7 @@ export class GraphsComponent implements OnInit {
       }
     ]);
   }
-  /*      
-         Variables aren't being used. Just making the randomized math accessible. 
-          Each has a different limit, in order to meet the number limits of the y-axis
-          previously assigned for the graphs.  
-
-          UPDATE: The graphs do NOT have a limit. Numbers are there as approximates.
-  */
-
-  randvar1 = Math.floor((Math.random() * 1000) + 1);
-
-  randvar2 = Math.floor((Math.random() * 10) + 1);
-
-  randvar3 = Math.floor((Math.random() * 25) + 1);
-
-  randvar4 = Math.floor((Math.random() * 400) + 1);
-  
-
-  /*
-    To continually excecute a function, after waiting the specified number for milliseconds: 
-        setInterval(function, milliseconds)
-  */
-
-
-  
+   
 
   chartBuilder(element, xData, yDataset){
 
