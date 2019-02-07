@@ -1,4 +1,4 @@
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -35,7 +35,7 @@ export class DataService {
 
   //CRUD operations
   getAllData(): Observable<BuggyData[]> {
-    return this._http.get<BuggyData[]>('http://localhost:3000/api/NewBuggy');
+    return this._http.get<BuggyData[]>('http://localhost:3000/api/NewBuggy/recent');
   }
 
   getData(id: number): Observable<BuggyData> {
