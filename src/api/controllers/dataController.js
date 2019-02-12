@@ -66,7 +66,7 @@ exports.getLastValues = function(req, res) {
 };
 
 /**
-  This function adds a new rows to the Data Base
+  This function adds new rows to the Data Base
 **/
 exports.addData = function(req, res) {
   const table = req.params['table']; // Respective Buggy table

@@ -16,6 +16,13 @@ app.use(express.static(__dirname + '../../dist/buggy-gui-angularPort'));
 //in the docs for body parser middleware
 app.use(bodyParser.json());
 
+// enable cross-origin requests from anywhere
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //register the routes
 dataRoutes(app);
 
