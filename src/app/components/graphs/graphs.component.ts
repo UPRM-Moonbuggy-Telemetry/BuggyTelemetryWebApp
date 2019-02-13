@@ -171,7 +171,7 @@ export class GraphsComponent implements OnInit {
   }
 
   generateXLabels(){
-    for(let i=1; i <= this.allData.length; i++){
+    for(let i=1; i <= 30; i++){
         this.xlabels.push(i);
     }
   }
