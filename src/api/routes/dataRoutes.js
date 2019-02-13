@@ -9,6 +9,9 @@ module.exports = function(app) {
     .get(data.getAll)
     .post(data.addData);
 
+  app.route('/api/:table/recent')
+    .get(data.getLastValues);
+
   app.route('/api/:table/:id')
     .get(data.getId)
     .delete(data.removeId)

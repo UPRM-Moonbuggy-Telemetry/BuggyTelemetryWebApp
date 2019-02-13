@@ -1,13 +1,15 @@
 const db = require('../models/dataModel.js').pool;
 const _ = require('lodash');
 
-//reads all values from DB
+/**
+  Gets all the rows from the Data Base
+**/
 exports.getAll = function(req, res) {
   const table = req.params['table']; // Respective Buggy table
 
   //query the DB using prepared statement
   const queryText = 'SELECT * from '+ table;
-  var results = db.query(queryText, function (error, results, fields) {
+  const results = db.query(queryText, function (error, results, fields) {
     //if error, print blank results
     if (error) {
       res.status(404).send(req.body);
@@ -22,11 +24,54 @@ exports.getAll = function(req, res) {
   });
 };
 
-//adds a row to DB
+/**
+  Get the last 30 values or less from the Data Base, the outer query
+  gets the number of rows and the inner query gets the data.
+**/
+exports.getLastValues = function(req, res) {
+  const table = req.params['table'];
+  const rowsNumQuery = `SELECT COUNT(*) As count FROM `+ table;
+
+  //Outer query
+  const results = db.query(rowsNumQuery,function (error, result) {
+
+      if (error) {
+        res.status(404).send(req.body);
+      }
+
+      var json = JSON.stringify(result);
+      json =  JSON.parse(json);
+      var rowsNum = json[0].count;
+
+      //If the DB have >30 rows we choose the first 30's
+      if (rowsNum>30){
+        rowsNum = 30;
+      }
+
+      const queryText = `SELECT * from (SELECT * FROM `+table+` ORDER BY id
+        DESC LIMIT `+String(rowsNum)+`) sub ORDER BY id ASC`;
+
+      //Inner query
+      const rslt = db.query(queryText, function (error, results, fields) {
+        if (error) {
+          res.status(404).send(req.body);
+        }
+
+        var resultJson = JSON.stringify(results);
+        resultJson = JSON.parse(resultJson);
+
+        res.send(resultJson);
+      });
+  });
+};
+
+/**
+  This function adds new rows to the Data Base
+**/
 exports.addData = function(req, res) {
   const table = req.params['table']; // Respective Buggy table
-  
-  var queryText = `INSERT INTO `+ table + ` (strain_sensor_1, strain_sensor_2,
+
+  const queryText = `INSERT INTO `+ table + ` (strain_sensor_1, strain_sensor_2,
   strain_sensor_3, strain_sensor_4, vibration_sensor_1, vibration_sensor_2,
   vibration_sensor_3, vibration_sensor_4, vibration_sensor_5, battery_status,
   latitude, longitude, GSC_time, GSC_date) VALUES ?`;
@@ -51,12 +96,14 @@ exports.addData = function(req, res) {
   res.status(201).send(req.body);
 };
 
-//gets specific row from DB
+/**
+  This function gets a specific row from the Data Base
+**/
 exports.getId = function(req, res) {
   const paramId = req.params['id'];
   const table = req.params['table']; // Respective Buggy table
 
-  var queryText = 'SELECT * FROM '+ table +' WHERE id = ?';
+  const queryText = 'SELECT * FROM '+ table +' WHERE id = ?';
   db.query(queryText, [paramId], function (err, result) {
     if (err) res.status(404).send(req.body);
 
@@ -69,12 +116,14 @@ exports.getId = function(req, res) {
   });
 };
 
-//updates specific row from DB
+/**
+  This function updates a specific row from the Data Base
+**/
 exports.updateId = function(req, res){
   const paramId = req.params['id'];
   const table = req.params['table'];// Respective Buggy table
 
-  var queryText = `UPDATE `+ table +` SET strain_sensor_1 = ?, strain_sensor_2 = ?,
+  const queryText = `UPDATE `+ table +` SET strain_sensor_1 = ?, strain_sensor_2 = ?,
   strain_sensor_3 = ?, strain_sensor_4 = ?, vibration_sensor_1 = ?,
   vibration_sensor_2 = ?, vibration_sensor_3 = ?, vibration_sensor_4 = ?,
   vibration_sensor_5 = ?, battery_status = ?, latitude = ?, longitude = ?,
@@ -94,12 +143,14 @@ exports.updateId = function(req, res){
   });
 };
 
-//removes row from DB
+/**
+  This function removes a specific row from the Data Base
+**/
 exports.removeId = function(req, res){
   const paramId = req.params['id'];
   const table = req.params['table']; // Respective Buggy table
 
-  var queryText = "DELETE FROM "+ table +" WHERE id = ?";
+  const queryText = "DELETE FROM "+ table +" WHERE id = ?";
   db.query(queryText, [paramId], function (err, result) {
     if (err) res.sendStatus(404);
 
