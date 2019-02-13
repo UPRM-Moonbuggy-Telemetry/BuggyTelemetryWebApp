@@ -74,7 +74,7 @@ exports.addData = function(req, res) {
   const queryText = `INSERT INTO `+ table + ` (strain_sensor_1, strain_sensor_2,
   strain_sensor_3, strain_sensor_4, vibration_sensor_1, vibration_sensor_2,
   vibration_sensor_3, vibration_sensor_4, vibration_sensor_5, battery_status,
-  latitude, longitude, GSC_time, GSC_date) VALUES ?`;
+  latitude, longitude, GSC_time, GSC_date, OBC_time, OBC_date) VALUES ?`;
 
   var values = [];
   var dt =  new Date();
@@ -86,7 +86,7 @@ exports.addData = function(req, res) {
     value.strain_sensor_3,value.strain_sensor_4,value.vibration_sensor_1,
     value.vibration_sensor_2,value.vibration_sensor_3,value.vibration_sensor_4,
     value.vibration_sensor_5, value.battery_status, value.latitude,
-    value.longitude, time, date]);
+    value.longitude, time, date, value.OBC_time, value.OBC_date]);
   });
 
   db.query(queryText, [values], function (err, result) {
@@ -127,14 +127,15 @@ exports.updateId = function(req, res){
   strain_sensor_3 = ?, strain_sensor_4 = ?, vibration_sensor_1 = ?,
   vibration_sensor_2 = ?, vibration_sensor_3 = ?, vibration_sensor_4 = ?,
   vibration_sensor_5 = ?, battery_status = ?, latitude = ?, longitude = ?,
-  GSC_time = ?, GSC_date = ? WHERE id = ?`;
+  GSC_time = ?, GSC_date = ?, OBC_time = ?, OBC_date = ? WHERE id = ?`;
 
   db.query(queryText, [req.body.strain_sensor_1, req.body.strain_sensor_2,
   req.body.strain_sensor_3, req.body.strain_sensor_4,req.body.vibration_sensor_1,
   req.body.vibration_sensor_2, req.body.vibration_sensor_3,
   req.body.vibration_sensor_4, req.body.vibration_sensor_5,
   req.body.battery_status, req.body.latitude, req.body.longitude,req.body.GSC_time,
-  req.body.GSC_date, paramId], function (err, result) {
+  req.body.GSC_date, req.body.OBC_time, req.body.OBC_date, paramId],
+  function (err, result) {
 
     if (err) res.status(406).send(req.body);
 

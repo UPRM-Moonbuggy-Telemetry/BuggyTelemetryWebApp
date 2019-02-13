@@ -17,7 +17,9 @@ export interface BuggyData {
   latitude: number,
   longitude: number,
   GSC_time: string,
-  GSC_date: string
+  GSC_date: string,
+  OBC_time: string,
+  OBC_date: string
 }
 
 @Injectable({
