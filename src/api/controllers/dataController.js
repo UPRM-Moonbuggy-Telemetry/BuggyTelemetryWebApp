@@ -49,7 +49,7 @@ exports.getLastValues = function(req, res) {
       }
 
       const queryText = `SELECT * from (SELECT * FROM `+table+` ORDER BY id
-        DESC LIMIT `+String(rowsNum)+`) sub ORDER BY id ASC`;
+        DESC LIMIT `+String(rowsNum)+`) sub`;
 
       //Inner query
       const rslt = db.query(queryText, function (error, results, fields) {
