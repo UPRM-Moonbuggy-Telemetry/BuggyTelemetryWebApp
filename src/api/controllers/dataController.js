@@ -79,7 +79,8 @@ exports.addData = function(req, res) {
   var values = [];
   var dt =  new Date();
   var time = dt.toTimeString().substring(0,8);
-  var date = dt.getFullYear()+"/"+dt.getMonth()+"/"+dt.getDate();
+  var month = parseInt(dt.getMonth())+1
+  var date = dt.getFullYear()+"-"+month.toString()+"-"+dt.getDate();
 
   _.forEach(req.body, function(value) {
     values.push([value.strain_sensor_1, value.strain_sensor_2,
