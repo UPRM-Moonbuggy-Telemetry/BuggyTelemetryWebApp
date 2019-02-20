@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Map, getRndNumber } from '@jaortiz117/icon-map';
 
 @Component({
@@ -11,21 +11,33 @@ export class GpsComponent implements OnInit {
   @ViewChild('parent') parent: ElementRef;
   @ViewChild('element') element: ElementRef;
   @ViewChild('container') container: ElementRef;
-  constructor() { }
+
+  map: Map = [];
+  constructor() {
+  }
 
   ngOnInit() {
-    this.container.nativeElement.style.visibility = "visible";
-    var map = new Map(this.parent.nativeElement, this.element.nativeElement, {
-      top: -86.655645,
-      bottom: -86.652185
+    this.map = new Map(this.parent.nativeElement, this.element.nativeElement, {
+      top: -86.652185,
+      bottom: -86.655645
     }, {
-      top: 34.709558,
-      bottom: 34.711180
+      top: 34.711180,
+      bottom: 34.709558
     });
-    map.refresh({
+    // map.refresh({
+    //   y: getRndNumber(-86.655645, -86.652185),
+    //   x: getRndNumber(34.709558,34.711180)
+    // });
+  }
+
+  ngAfterViewInit(){
+    this.map.refresh({
       y: getRndNumber(-86.655645, -86.652185),
-      x: getRndNumber(34.709558,34.711180)
+      x: 34.710
     });
+
+    console.log("y: " + this.element.nativeElement.style.top, ", x: " + this.element.nativeElement.style.left + "\n pos: " + this.element.nativeElement.style.position);
+    console.log("Paren top: " + this.parent.nativeElement.style.top + ", Elem parent top: " + (this.element.nativeElement.parentElement.style.top));
   }
 
 }

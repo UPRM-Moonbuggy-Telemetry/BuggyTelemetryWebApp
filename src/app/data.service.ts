@@ -2,48 +2,46 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-export interface Cat {
-  name: string;
-}
-
-export interface TestData {
-  id: number;
-  strain: number;
-  vibracion: number;
+export interface BuggyData {
+  id: number,
+  strain_sensor_1: number,
+  strain_sensor_2: number,
+  strain_sensor_3: number,
+  strain_sensor_4: number,
+  vibration_sensor_1: number,
+  vibration_sensor_2: number,
+  vibration_sensor_3: number,
+  vibration_sensor_4: number,
+  vibration_sensor_5: number,
+  battery_status: number,
+  latitude: number,
+  longitude: number,
+  GSC_time: string,
+  GSC_date: string,
+  OBC_time: string,
+  OBC_date: string
 }
 
 @Injectable({
   providedIn: 'root'
 })
 
-//this class takes care of all data api calls
-//if we add another API (images, for example) we should create a new service called ImagesService
-//or whichever name is appropriate for the API
+/**
+  This class takes care of all data api calls if we add another
+  API (images, for example) we should create a new service called
+  ImagesService or whichever name is appropriate for the API
+**/
 export class DataService {
 
   constructor(private _http: HttpClient) { }
 
   //CRUD operations
-  getAllData(): Observable<TestData[]> {
-    return this._http.get<TestData[]>('http://localhost:3000/api/data');
+  getAllData(): Observable<BuggyData[]> {
+    return this._http.get<BuggyData[]>('http://localhost:3000/api/NewBuggy/recent');
   }
 
-  getData(id: number): Observable<TestData> {
-    return this._http.get<TestData>('http://localhost:3000/api/data/' + id);
-  }
-
-  insertData(data: TestData): Observable<TestData> {
-    return this._http.post<TestData>('http://localhost:3000/api/data/',
-    {"strain": data.strain, "vibracion": data.vibracion});
-  }
-
-  updateData(data: TestData): Observable<void> {
-    return this._http.put<void>('http://localhost:3000/api/data/' + data.id,
-    {"strain": data.strain, "vibracion": data.vibracion});
-  }
-
-  deleteData(id: number) {
-    return this._http.delete('http://localhost:3000/api/data/' + id);
+  getData(id: number): Observable<BuggyData> {
+    return this._http.get<BuggyData>('http://localhost:3000/api/NewBuggy/' + id);
   }
 
 }
