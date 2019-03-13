@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { JSMpeg } from '../../../../assets/js/jsmpeg-master/jsmpeg.min.js';
+declare var JSMpeg: any;
 
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit {
+export class VideoComponent implements OnInit {  
+  @ViewChild('video') video: ElementRef;
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(){
+    var canvas = this.video.nativeElement;
+    var url = 'ws://'+document.location.hostname+':8082/';
+    var player = new JSMpeg.Player(url, {canvas: canvas});
   }
 
 }
