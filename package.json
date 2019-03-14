@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon ./src/server",
+    "start": "start nodemon ./src/server & start node ./src/assets/js/jsmpeg-master/websocket-relay.js supersecret 8081 8082 &",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
