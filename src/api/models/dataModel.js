@@ -21,9 +21,10 @@ const createTableNewBuggy = () => {
           strain_sensor_4 INT, vibration_sensor_1 INT, vibration_sensor_2 INT,
           vibration_sensor_3 INT, vibration_sensor_4 INT, vibration_sensor_5 INT,
           battery_status INT, latitude DOUBLE, longitude DOUBLE,
-          GSC_time VARCHAR(10), GSC_date VARCHAR(12))`;
+          GSC_time VARCHAR(10), GSC_date VARCHAR(12), OBC_time VARCHAR(10),
+          OBC_date VARCHAR(12))`;
 
-      //To-DO : Add humedad, temp, buggy DATETIME(2)
+      //To-DO : Add humedad, temp
 
   pool.query(queryText, function (error, results, fields) {
     if(error){
@@ -42,9 +43,10 @@ const createTableOldBuggy = () => {
           strain_sensor_4 INT, vibration_sensor_1 INT, vibration_sensor_2 INT,
           vibration_sensor_3 INT, vibration_sensor_4 INT, vibration_sensor_5 INT,
           battery_status INT, latitude DOUBLE, longitude DOUBLE,
-          GSC_time VARCHAR(10), GSC_date VARCHAR(12))`;
+          GSC_time VARCHAR(10), GSC_date VARCHAR(12), OBC_time VARCHAR(10),
+          OBC_date VARCHAR(12))`;
 
-      //To-DO : Add humedad, temp, buggy DATETIME(2)
+      //To-DO : Add humedad, temp
 
   pool.query(queryText, function (error, results, fields) {
     if(error){
