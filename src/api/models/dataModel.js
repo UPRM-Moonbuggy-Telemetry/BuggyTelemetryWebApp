@@ -17,14 +17,14 @@ pool.on('connection', () => {
 const createTableNewBuggy = () => {
   const queryText = `CREATE TABLE
           NewBuggy (id INT AUTO_INCREMENT PRIMARY KEY,
-          strain_sensor_1 INT, strain_sensor_2 INT, strain_sensor_3 INT,
-          strain_sensor_4 INT, vibration_sensor_1 INT, vibration_sensor_2 INT,
-          vibration_sensor_3 INT, vibration_sensor_4 INT, vibration_sensor_5 INT,
+          strain_front_lft_1 INT, strain_front_lft_2 INT, strain_front_lft_3 INT,
+          strain_front_rt_1 INT, strain_front_rt_2 INT, strain_front_rt_3 INT,
+          strain_center_1 INT, strain_center_2 INT, strain_center_3 INT,
+          vibration_front_lft INT, vibration_front_rt INT, vibration_rear_lft INT, 
+          vibration_rear_rt INT, vibration_center INT,
           battery_status INT, latitude DOUBLE, longitude DOUBLE,
           GSC_time VARCHAR(10), GSC_date VARCHAR(12), OBC_time VARCHAR(10),
           OBC_date VARCHAR(12))`;
-
-      //To-DO : Add humedad, temp
 
   pool.query(queryText, function (error, results, fields) {
     if(error){
@@ -39,14 +39,14 @@ const createTableNewBuggy = () => {
 const createTableOldBuggy = () => {
   const queryText = `CREATE TABLE
           OldBuggy (id INT AUTO_INCREMENT PRIMARY KEY,
-          strain_sensor_1 INT, strain_sensor_2 INT, strain_sensor_3 INT,
-          strain_sensor_4 INT, vibration_sensor_1 INT, vibration_sensor_2 INT,
-          vibration_sensor_3 INT, vibration_sensor_4 INT, vibration_sensor_5 INT,
+          strain_front_lft_1 INT, strain_front_lft_2 INT, strain_front_lft_3 INT,
+          strain_front_rt_1 INT, strain_front_rt_2 INT, strain_front_rt_3 INT,
+          strain_center_1 INT, strain_center_2 INT, strain_center_3 INT,
+          vibration_front_lft INT, vibration_front_rt INT, vibration_rear_lft INT, 
+          vibration_rear_rt INT, vibration_center INT,
           battery_status INT, latitude DOUBLE, longitude DOUBLE,
           GSC_time VARCHAR(10), GSC_date VARCHAR(12), OBC_time VARCHAR(10),
           OBC_date VARCHAR(12))`;
-
-      //To-DO : Add humedad, temp
 
   pool.query(queryText, function (error, results, fields) {
     if(error){

@@ -71,23 +71,26 @@ exports.getLastValues = function(req, res) {
 exports.addData = function(req, res) {
   const table = req.params['table']; // Respective Buggy table
 
-  const queryText = `INSERT INTO `+ table + ` (strain_sensor_1, strain_sensor_2,
-  strain_sensor_3, strain_sensor_4, vibration_sensor_1, vibration_sensor_2,
-  vibration_sensor_3, vibration_sensor_4, vibration_sensor_5, battery_status,
+  const queryText = `INSERT INTO `+ table + ` (strain_front_lft_1, strain_front_lft_2,
+  strain_front_lft_3, strain_front_rt_1, strain_front_rt_2, strain_front_rt_3, strain_center_1,
+  strain_center_2, strain_center_3, vibration_front_lft, vibration_front_rt,
+  vibration_rear_lft, vibration_rear_rt, vibration_center, battery_status,
   latitude, longitude, GSC_time, GSC_date, OBC_time, OBC_date) VALUES ?`;
 
   var values = [];
   var dt =  new Date();
   var time = dt.toTimeString().substring(0,8);
-  var month = parseInt(dt.getMonth())+1
+  var month = parseInt(dt.getMonth())+1;
   var date = dt.getFullYear()+"-"+month.toString()+"-"+dt.getDate();
 
   _.forEach(req.body, function(value) {
-    values.push([value.strain_sensor_1, value.strain_sensor_2,
-    value.strain_sensor_3,value.strain_sensor_4,value.vibration_sensor_1,
-    value.vibration_sensor_2,value.vibration_sensor_3,value.vibration_sensor_4,
-    value.vibration_sensor_5, value.battery_status, value.latitude,
-    value.longitude, time, date, value.OBC_time, value.OBC_date]);
+    values.push([value.strain_front_lft_1, value.strain_front_lft_2,
+      value.strain_front_lft_3,value.strain_front_rt_1, value.strain_front_rt_2,
+      value.strain_front_rt_3, value.strain_center_1, value.strain_center_2,
+      value.strain_center_3, value.vibration_front_lft, value.vibration_front_rt,
+      value.vibration_rear_lft,value.vibration_rear_rt, value.vibration_center,
+      value.battery_status, value.latitude, value.longitude, time, date,
+      value.OBC_time, value.OBC_date]);
   });
 
   db.query(queryText, [values], function (err, result) {
@@ -124,18 +127,20 @@ exports.updateId = function(req, res){
   const paramId = req.params['id'];
   const table = req.params['table'];// Respective Buggy table
 
-  const queryText = `UPDATE `+ table +` SET strain_sensor_1 = ?, strain_sensor_2 = ?,
-  strain_sensor_3 = ?, strain_sensor_4 = ?, vibration_sensor_1 = ?,
-  vibration_sensor_2 = ?, vibration_sensor_3 = ?, vibration_sensor_4 = ?,
-  vibration_sensor_5 = ?, battery_status = ?, latitude = ?, longitude = ?,
+  const queryText = `UPDATE `+ table +` SET strain_front_lft_1 = ?, strain_front_lft_2 = ?,
+  strain_front_lft_3 = ?, strain_front_rt_1 = ?,  strain_front_rt_2 = ?, strain_front_rt_3 = ?,
+  strain_center_1 = ?, strain_center_2 = ?, strain_center_3 = ?, vibration_front_lft = ?,
+  vibration_front_rt = ?, vibration_rear_lft = ?, vibration_rear_rt = ?,
+  vibration_center = ?, battery_status = ?, latitude = ?, longitude = ?,
   GSC_time = ?, GSC_date = ?, OBC_time = ?, OBC_date = ? WHERE id = ?`;
 
-  db.query(queryText, [req.body.strain_sensor_1, req.body.strain_sensor_2,
-  req.body.strain_sensor_3, req.body.strain_sensor_4,req.body.vibration_sensor_1,
-  req.body.vibration_sensor_2, req.body.vibration_sensor_3,
-  req.body.vibration_sensor_4, req.body.vibration_sensor_5,
-  req.body.battery_status, req.body.latitude, req.body.longitude,req.body.GSC_time,
-  req.body.GSC_date, req.body.OBC_time, req.body.OBC_date, paramId],
+  db.query(queryText, [req.body.strain_front_lft_1, req.body.strain_front_lft_2,
+      req.body.strain_front_lft_3, req.body.strain_front_rt_1, req.body.strain_front_rt_2,
+      req.body.strain_front_rt_3, req.body.strain_center_1, req.body.strain_center_2,
+      req.body.strain_center_3, req.body.vibration_front_lft, req.body.vibration_front_rt,
+      req.body.vibration_rear_lft, req.body.vibration_rear_rt, req.body.vibration_center,
+      req.body.battery_status, req.body.latitude, req.body.longitude,req.body.GSC_time,
+      req.body.GSC_date, req.body.OBC_time, req.body.OBC_date, paramId],
   function (err, result) {
 
     if (err) res.status(406).send(req.body);
