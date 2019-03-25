@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable, OnInit} from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 export interface BuggyData {
   id: number,
@@ -36,17 +37,28 @@ export interface BuggyData {
   API (images, for example) we should create a new service called
   ImagesService or whichever name is appropriate for the API
 **/
-export class DataService {
+export class DataService implements OnInit {
 
-  constructor(private _http: HttpClient) { }
+  table: string;
+  sub: any;
+
+  constructor(private _http: HttpClient, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.sub = this.route.queryParams.subscribe(params => {
+        this.table = params.name || 'NewBuggy';
+      });
+  }
 
   //CRUD operations
   getAllData(): Observable<BuggyData[]> {
-    return this._http.get<BuggyData[]>('http://localhost:3000/api/NewBuggy/recent');
+    this.ngOnInit();
+    return this._http.get<BuggyData[]>('http://localhost:3000/api/' + this.table + '/recent');
   }
 
   getData(id: number): Observable<BuggyData> {
-    return this._http.get<BuggyData>('http://localhost:3000/api/NewBuggy/' + id);
+    this.ngOnInit();
+    return this._http.get<BuggyData>('http://localhost:3000/api/' + this.table + '/' + id);
   }
 
 }
