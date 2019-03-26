@@ -16,7 +16,7 @@ export class GraphsComponent implements OnInit {
 
   allData = []; // DB most recent data
   chart = []; // This will hold our chart1 info, frontal strain
-  chart2 = []; // This will hold our chart2 info, back strain
+  chart2 = []; // This will hold our chart2 info, central strain
   chart3 = []; // This will hold our chart3 info, frontal vibration
   chart4 = []; // This will hold our chart3 info, back vibration
   xlabels = []; // x-axis
@@ -37,8 +37,8 @@ export class GraphsComponent implements OnInit {
     var strain1 = []
     var strain2 = []
     for(let i=0; i<this.allData.length; i++){
-      strain1[i] = this.allData[i].strain_sensor_1;
-      strain2[i] = this.allData[i].strain_sensor_2;
+      strain1[i] = this.allData[i].strain_front_lft_1;
+      strain2[i] = this.allData[i].strain_front_rt_1;
     }
     return [strain1,strain2];
   }
@@ -47,8 +47,8 @@ export class GraphsComponent implements OnInit {
     var vibration1 = []
     var vibration2 = []
     for(let i=0; i<this.allData.length; i++){
-      vibration1[i] = this.allData[i].vibration_sensor_1;
-      vibration2[i] = this.allData[i].vibration_sensor_2;
+      vibration1[i] = this.allData[i].vibration_front_lft;
+      vibration2[i] = this.allData[i].vibration_front_rt;
     }
     return [vibration1,vibration2];
   }
@@ -57,8 +57,8 @@ export class GraphsComponent implements OnInit {
     var strain3 = []
     var strain4 = []
     for(let i=0; i<this.allData.length; i++){
-      strain3[i] = this.allData[i].strain_sensor_3;
-      strain4[i] = this.allData[i].strain_sensor_4;
+      strain3[i] = this.allData[i].strain_center_1;
+      strain4[i] = this.allData[i].strain_center_2;
     }
     return [strain3,strain4];
   }
@@ -67,8 +67,8 @@ export class GraphsComponent implements OnInit {
     var vibration3 = []
     var vibration4 = []
     for(let i=0; i<this.allData.length; i++){
-      vibration3[i] = this.allData[i].vibration_sensor_3;
-      vibration4[i] = this.allData[i].vibration_sensor_4;
+      vibration3[i] = this.allData[i].vibration_rear_lft;
+      vibration4[i] = this.allData[i].vibration_rear_rt;
     }
     return [vibration3,vibration4];
   }
@@ -82,13 +82,13 @@ export class GraphsComponent implements OnInit {
     this.chart = this.chartBuilder(this.canvas, [
       {
         data: strain1,
-        borderColor: "#17dd44",
+        borderColor: "#5fd152",
         fill: false,
         label: 'Frontal Strain 1'
       },
       {
         data: strain2,
-        borderColor: "#dad823",
+        borderColor: "#a073ff",
         fill: false,
         label: 'Frontal Strain 2'
       }
@@ -97,15 +97,15 @@ export class GraphsComponent implements OnInit {
     this.chart2 = this.chartBuilder(this.canvas2, [
       {
         data: strain3,
-        borderColor: "#9017e4",
+        borderColor: "#5fd152",
         fill: false,
-        label: 'Rear Strain 1'
+        label: 'Central Strain 1'
       },
       {
         data: strain4,
-        borderColor: "#dad823",
+        borderColor: "#a073ff",
         fill: false,
-        label: 'Rear Strain 1'
+        label: 'Central Strain 2'
       }
     ]);
 
@@ -117,30 +117,30 @@ export class GraphsComponent implements OnInit {
     this.chart3 = this.chartBuilder(this.canvas3, [
       {
         data: vibration1,
-        borderColor: "#dad823",
+        borderColor: "#fc6625",
         fill: false,
-        label: 'Frontal Vibration 1'
+        label: 'Left Frontal Vibration'
       },
       {
         data: vibration2,
-        borderColor: "#3c17e4",
+        borderColor: "#3c75df",
         fill: false,
-        label: 'Frontal Vibration 2'
+        label: 'Right Frontal Vibration'
       }
     ]);
 
     this.chart4 = this.chartBuilder(this.canvas4, [
       {
         data: vibration3,
-        borderColor: "#3c17e4",
+        borderColor: "#fc6625",
         fill: false,
-        label: 'Rear Vibration 1'
+        label: 'Left Rear Vibration'
       },
       {
         data: vibration4,
-        borderColor: "#dad823",
+        borderColor: "#3c75df",
         fill: false,
-        label: 'Rear Vibration 2'
+        label: 'Right Rear Vibration'
       }
     ]);
   }

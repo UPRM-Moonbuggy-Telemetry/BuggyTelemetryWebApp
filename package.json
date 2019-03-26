@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon ./src/server",
+    "start": "start nodemon ./src/server & start node ./src/assets/js/jsmpeg-master/websocket-relay.js supersecret 8081 8082 &",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -30,6 +30,7 @@
     "mysql": "^2.16.0",
     "ngx-bootstrap": "^2.0.5",
     "rxjs": "6.4.0",
+    "ws": "^6.2.0",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
