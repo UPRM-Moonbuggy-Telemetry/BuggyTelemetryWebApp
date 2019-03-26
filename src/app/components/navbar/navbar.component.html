@@ -24,8 +24,10 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <a href="#">Buggy #1</a>
-              <a href="#">Buggy #2</a>
+              <a [routerLink]="['/buggy']"
+                 [queryParams]="{ name: 'NewBuggy' }"> New Buggy </a>
+              <a [routerLink]="['/buggy']"
+                 [queryParams]="{ name: 'OldBuggy' }"> Old Buggy </a>
             </div>
           </div>
           </a>
