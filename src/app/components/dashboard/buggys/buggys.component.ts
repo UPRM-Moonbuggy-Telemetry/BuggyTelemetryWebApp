@@ -23,28 +23,76 @@ export class BuggysComponent {
     setInterval(() => {this.updateHeatmap()}, 1000);
   }
 
-  getStrain1Data(){
-    var strain_1 = []
+  getStrainLeftData(){
+    var strain_1L = []
     for(let i=0; i<this.allData.length; i++){
-      strain_1[i] = this.allData[i].strain_sensor_1;
+      strain_1L[i] = this.allData[i].strain_front_lft_1;
     }
-    return [strain_1];
+    return [strain_1L];
   }
 
-  getStrain2Data(){
-    var strain_2 = []
+  getStrainLeft2Data(){
+    var strain_2L = []
     for(let i=0; i<this.allData.length; i++){
-      strain_2[i] = this.allData[i].strain_sensor_2;
+      strain_2L[i] = this.allData[i].strain_front_lft_2;
     }
-    return [strain_2];
+    return [strain_2L];
   }
-  
-  getStrain3Data(){
-    var strain_3 = []
+
+  getStrainLeft3Data(){
+    var strain_3L = []
     for(let i=0; i<this.allData.length; i++){
-      strain_3[i] = this.allData[i].strain_sensor_3;
+      strain_3L[i] = this.allData[i].strain_front_lft_3;
     }
-    return [strain_3];
+    return [strain_3L];
+  }
+
+  getStrainRightData(){
+    var strain_1R = []
+    for(let i=0; i<this.allData.length; i++){
+      strain_1R[i] = this.allData[i].strain_front_rt_1;
+    }
+    return [strain_1R];
+  }
+
+  getStrainRight2Data(){
+    var strain_2R = []
+    for(let i=0; i<this.allData.length; i++){
+      strain_2R[i] = this.allData[i].strain_front_rt_2;
+    }
+    return [strain_2R];
+  }
+
+  getStrainRight3Data(){
+    var strain_3R = []
+    for(let i=0; i<this.allData.length; i++){
+      strain_3R[i] = this.allData[i].strain_front_rt_3;
+    }
+    return [strain_3R];
+  }
+
+  getStrainCenterData(){
+    var strain_1C = []
+    for(let i=0; i<this.allData.length; i++){
+      strain_1C[i] = this.allData[i].strain_center_1;
+    }
+    return [strain_1C];
+  }
+
+  getStrainCenter2Data(){
+    var strain_2C = []
+    for(let i=0; i<this.allData.length; i++){
+      strain_2C[i] = this.allData[i].strain_center_2;
+    }
+    return [strain_2C];
+  }
+
+  getStrainCenter3Data(){
+    var strain_3C = []
+    for(let i=0; i<this.allData.length; i++){
+      strain_3C[i] = this.allData[i].strain_center_3;
+    }
+    return [strain_3C];
   }
 
   updateHeatmap() {
@@ -57,45 +105,53 @@ export class BuggysComponent {
     var height = 360;
     var width = 370; // Actual space width is 400, yet the heatmap exceeds boundaries when it's 400.
     var max = 150; // Higher the number, less saturated and extreme red splotches.
-    var len = 400; // Smaller the number, more precise red area marking of the points.
+    var len = 4000; // Smaller the number, more precise red area marking of the points.
     var points = [];
 
-    while (len--) {
-      var strain1 = this.getStrain1Data();
-      var strain2 = this.getStrain2Data();
-      var strain3 = this.getStrain3Data();
+    while (len != 0) {
+      len--;
+      var strainLeft = this.getStrainLeftData();
+      var strainLeft2 = this.getStrainLeft2Data();
+      var strainLeft3 = this.getStrainLeft3Data();
+      var strainRight  = this.getStrainRightData();
+      var strainRight2  = this.getStrainRight2Data();
+      var strainRight3  = this.getStrainRight3Data();
+      var strainCenter = this.getStrainCenterData();
+      var strainCenter2 = this.getStrainCenter2Data();
+      var strainCenter3 = this.getStrainCenter3Data();
 
-      var randval = Math.floor(Math.random()*100);
-      max = Math.max(max, randval);
+      // var randval = Math.floor(Math.random()*100);
+      max = Math.max(max, 6);
       
-      var fPoint1 = {
+      var LPoint = {
         x: 362,
         y: 220,
-        value: strain1
+        value: strainLeft, strainLeft2, strainLeft3
       };
-      var fPoint2 = {
+      var RPoint = {
         x: 362,
         y: 130,
-        value: strain2
+        value: strainRight, strainRight2, strainRight3
       };
-      var bPoint3 = {
+      var CPoint = {
         x: 245,
         y: 174,
-        value: strain3
+        value: strainCenter, strainCenter2, strainCenter3
       };
-      points.push(fPoint1, fPoint2, bPoint3);
+      points.push(LPoint, RPoint, CPoint);
     }
     
     
     // Follow heatmap data format.
     var data = {
       max: max,
-      min: 10,
+      min: 0,
       data: points 
      };
   
     // Installs data which has been given by the variable above.
     heatmapInstance.setData(data);
+    heatmapInstance.repaint();
   }
 
 }
