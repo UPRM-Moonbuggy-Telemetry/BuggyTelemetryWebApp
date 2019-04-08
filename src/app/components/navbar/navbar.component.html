@@ -1,3 +1,4 @@
+    
 <nav class="background">
 
   <div class="navbar-header">
@@ -24,9 +25,10 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <!-- <select onchange = "$('#switchBuggy').attr('src', this.options[this.selectedIndex].value);"></select> -->
-              <a href="Buggy1">Buggy #1</a>
-              <a href="Buggy2">Buggy #2</a>
+              <a [routerLink]="['/buggy']"
+                 [queryParams]="{ name: 'NewBuggy' }"> New Buggy </a>
+              <a [routerLink]="['/buggy']"
+                 [queryParams]="{ name: 'OldBuggy' }"> Old Buggy </a>
             </div>
           </div>
           </a>
