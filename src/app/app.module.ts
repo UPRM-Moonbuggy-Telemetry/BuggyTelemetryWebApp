@@ -15,6 +15,7 @@ import { BatteryComponent } from './components/status-bar/battery/battery.compon
 import { DateComponent } from './components/status-bar/date/date.component';
 import { SignalComponent } from './components/status-bar/signal/signal.component';
 import { BuggysComponent } from './components/dashboard/buggys/buggys.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BuggysComponent } from './components/dashboard/buggys/buggys.component'
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
