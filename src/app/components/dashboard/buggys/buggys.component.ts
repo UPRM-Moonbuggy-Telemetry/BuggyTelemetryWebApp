@@ -97,16 +97,17 @@ export class BuggysComponent {
 
   updateHeatmap() {
     var heatmapInstance = h337.create({
-      // This is where the info is stored! 
+      // This is where the info is stored!
       container: this.map.nativeElement
     });
-    
+
     // Random data generators and limits.
     var height = 360;
     var width = 370; // Actual space width is 400, yet the heatmap exceeds boundaries when it's 400.
     var max = 150; // Higher the number, less saturated and extreme red splotches.
     var len = 4000; // Smaller the number, more precise red area marking of the points.
     var points = [];
+
 
     while (len != 0) {
       len--;
@@ -141,14 +142,13 @@ export class BuggysComponent {
       points.push(LPoint, RPoint, CPoint);
     }
     
-    
     // Follow heatmap data format.
     var data = {
       max: max,
       min: 0,
       data: points 
      };
-  
+
     // Installs data which has been given by the variable above.
     heatmapInstance.setData(data);
     heatmapInstance.repaint();
