@@ -58,9 +58,6 @@ const createTableOldBuggy = () => {
   });
 }
 
-/**
- * If necessary run this functions to delete tables
- */
 const dropTableNewBuggy = () => {
   const queryText = 'DROP TABLE IF EXISTS NewBuggy';
   pool.query(queryText, function (error, results, fields) {
@@ -85,16 +82,45 @@ const dropTableOldBuggy = () => {
   });
 }
 
+/**
+ * This function can be used to create the tables
+ */
+const create = () => {
+  createTableNewBuggy();
+  createTableOldBuggy();
+}
+
+/**
+ * If necessary, this function delete the tables
+ */
+const drop = () => {
+  dropTableNewBuggy();
+  dropTableOldBuggy();
+}
+
+/**
+ * Just in case, this function deletes the existing tables
+ * and create new tables.
+ *
+ * Reminder: The tables must exist in order to use this function,
+ * if not then use createTables first
+ */
+const reset = () => {
+  dropTableNewBuggy();
+  dropTableOldBuggy();
+  createTableNewBuggy();
+  createTableOldBuggy();
+}
+
 module.exports = {
   pool,
-  createTableNewBuggy,
-  createTableOldBuggy,
-  dropTableNewBuggy,
-  dropTableOldBuggy
+  create,
+  reset,
+  drop,
 };
 
 /**
-  Necessary module to run createTable and dropTable in command line.
+  Necessary module to run functions in command line.
   Steps in the command line:
     1. cd <your proyect path>/Buggy7thGenTelemetry/src/api/models
     2. node dataModel <type here the function you want to run>
