@@ -3,7 +3,7 @@ const pool = mysql.createPool({
   user: "root",
   host: "localhost",
   database: "buggy_db",
-  password: "root",
+  password: "1234",
   port: "3306"
 });
 
@@ -20,7 +20,7 @@ const createTableNewBuggy = () => {
           strain_front_lft_1 INT, strain_front_lft_2 INT, strain_front_lft_3 INT,
           strain_front_rt_1 INT, strain_front_rt_2 INT, strain_front_rt_3 INT,
           strain_center_1 INT, strain_center_2 INT, strain_center_3 INT,
-          vibration_front_lft INT, vibration_front_rt INT, vibration_rear_lft INT, 
+          vibration_front_lft INT, vibration_front_rt INT, vibration_rear_lft INT,
           vibration_rear_rt INT, vibration_center INT,
           battery_status INT, latitude DOUBLE, longitude DOUBLE,
           GSC_time VARCHAR(10), GSC_date VARCHAR(12), OBC_time VARCHAR(10),
@@ -42,7 +42,7 @@ const createTableOldBuggy = () => {
           strain_front_lft_1 INT, strain_front_lft_2 INT, strain_front_lft_3 INT,
           strain_front_rt_1 INT, strain_front_rt_2 INT, strain_front_rt_3 INT,
           strain_center_1 INT, strain_center_2 INT, strain_center_3 INT,
-          vibration_front_lft INT, vibration_front_rt INT, vibration_rear_lft INT, 
+          vibration_front_lft INT, vibration_front_rt INT, vibration_rear_lft INT,
           vibration_rear_rt INT, vibration_center INT,
           battery_status INT, latitude DOUBLE, longitude DOUBLE,
           GSC_time VARCHAR(10), GSC_date VARCHAR(12), OBC_time VARCHAR(10),

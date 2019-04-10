@@ -1,0 +1,10 @@
+#coordinates-box{
+  border-left: 6px solid red;
+  background-color: lightgrey;
+  margin-left: 20px;
+  margin-top: 90px;
+}
+
+#numbers{
+  margin-left: 40px;
+}
