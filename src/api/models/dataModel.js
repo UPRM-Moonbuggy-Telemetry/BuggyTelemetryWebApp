@@ -3,7 +3,7 @@ const pool = mysql.createPool({
   user: "root",
   host: "localhost",
   database: "buggy_db",
-  password: "1234",
+  password: "root",
   port: "3306"
 });
 
