@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Map, getRndNumber } from '@jaortiz117/icon-map';
+import {DataService} from '../../../data.service';
 
 @Component({
   selector: 'app-gps',
@@ -13,8 +14,9 @@ export class GpsComponent implements OnInit {
   @ViewChild('container') container: ElementRef;
 
   map: Map = [];
-  constructor() {
-  }
+  allData = [];
+
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
     this.map = new Map(this.parent.nativeElement, this.element.nativeElement, {
@@ -24,20 +26,16 @@ export class GpsComponent implements OnInit {
       top: 34.711180,
       bottom: 34.709558
     });
-    // map.refresh({
-    //   y: getRndNumber(-86.655645, -86.652185),
-    //   x: getRndNumber(34.709558,34.711180)
-    // });
-  }
 
-  ngAfterViewInit(){
-    this.map.refresh({
-      y: getRndNumber(-86.655645, -86.652185),
-      x: 34.710
-    });
+    setInterval(() => {
+      this._dataService.getAllData().subscribe(data => {
+        this.allData = data;
+      });
+    }, 1000);
 
-    console.log("y: " + this.element.nativeElement.style.top, ", x: " + this.element.nativeElement.style.left + "\n pos: " + this.element.nativeElement.style.position);
-    console.log("Paren top: " + this.parent.nativeElement.style.top + ", Elem parent top: " + (this.element.nativeElement.parentElement.style.top));
+    setInterval(() => {
+      this.map.refresh({x: this.allData[0].latitude, y: this.allData[0].longitude}) ;
+      }, 1000);
   }
 
 }
