@@ -31,10 +31,10 @@ const createTableNewBuggy = () => {
       throw error;
       pool.end();
     }
-    console.log("Table created succesfully.")
+    console.log("Table created succesfully.");
     pool.end();
   });
-}
+};
 
 const createTableOldBuggy = () => {
   const queryText = `CREATE TABLE
@@ -53,10 +53,10 @@ const createTableOldBuggy = () => {
       throw error;
       pool.end();
     }
-    console.log("Table created succesfully.")
+    console.log("Table created succesfully.");
     pool.end();
   });
-}
+};
 
 const dropTableNewBuggy = () => {
   const queryText = 'DROP TABLE IF EXISTS NewBuggy';
@@ -65,10 +65,10 @@ const dropTableNewBuggy = () => {
       throw error;
       pool.end();
     }
-    console.log("Table droped succesfully.")
+    console.log("Table droped succesfully.");
     pool.end();
   });
-}
+};
 
 const dropTableOldBuggy = () => {
   const queryText = 'DROP TABLE IF EXISTS OldBuggy';
@@ -77,10 +77,10 @@ const dropTableOldBuggy = () => {
       throw error;
       pool.end();
     }
-    console.log("Table droped succesfully.")
+    console.log("Table droped succesfully.");
     pool.end();
   });
-}
+};
 
 /**
  * This function can be used to create the tables
@@ -88,7 +88,7 @@ const dropTableOldBuggy = () => {
 const create = () => {
   createTableNewBuggy();
   createTableOldBuggy();
-}
+};
 
 /**
  * If necessary, this function delete the tables
@@ -96,7 +96,7 @@ const create = () => {
 const drop = () => {
   dropTableNewBuggy();
   dropTableOldBuggy();
-}
+};
 
 /**
  * Just in case, this function deletes the existing tables
@@ -110,7 +110,7 @@ const reset = () => {
   dropTableOldBuggy();
   createTableNewBuggy();
   createTableOldBuggy();
-}
+};
 
 module.exports = {
   pool,
