@@ -46,11 +46,19 @@ export class DataService implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
+        /**
+          If the query string parameter 'name' is not found, 'New Buggy' is the
+          default. Useful in the case that a Buggy haven't been chosen in the
+          dropdown options
+        **/
         this.table = params.name || 'NewBuggy';
       });
   }
 
-  //CRUD operations
+  /**
+    This method send a request to the specified route. The '/recent' path is
+    used in order to get the most recent data
+  **/
   getAllData(): Observable<BuggyData[]> {
     this.ngOnInit();
     return this._http.get<BuggyData[]>('http://localhost:3000/api/' + this.table + '/recent');

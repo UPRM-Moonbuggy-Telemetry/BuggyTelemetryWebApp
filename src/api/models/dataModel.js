@@ -83,7 +83,10 @@ const dropTableOldBuggy = () => {
 }
 
 /**
- * This function can be used to create the tables
+ * This function create both tables, is assumed that they don't exist
+ *
+ * Note: If you don't want to create both tables, you can run
+ * createTableNewBuggy or createTableOldBuggy only
  */
 const create = () => {
   createTableNewBuggy();
@@ -91,7 +94,8 @@ const create = () => {
 }
 
 /**
- * If necessary, this function delete the tables
+ * If necessary, this function delete the tables.
+ * pre: Tables must exist before using this function
  */
 const drop = () => {
   dropTableNewBuggy();
@@ -99,11 +103,10 @@ const drop = () => {
 }
 
 /**
- * Just in case, this function deletes the existing tables
- * and create new tables.
+ * This function deletes the existing tables and create new tables.
  *
- * Reminder: The tables must exist in order to use this function,
- * if not then use createTables first
+ * pre: This is a utility function for dropping and creating again the
+ * tables.
  */
 const reset = () => {
   dropTableNewBuggy();
