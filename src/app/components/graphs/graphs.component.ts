@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { DataService } from '../../data.service';
-import { Chart } from 'chart.js';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {DataService} from '../../data.service';
+import {Chart} from 'chart.js';
 
 @Component({
   selector: 'app-graphs',
@@ -27,35 +27,35 @@ export class GraphsComponent implements OnInit {
     setInterval(() => {
       this._dataService.getAllData().subscribe(data => {
         this.allData = data;
-      })
+      });
     }, 1000);
-    setInterval(() => {this.updateCharts()}, 1000);
+    setInterval(() => { this.updateCharts(); }, 1000);
     this.generateXLabels();
   }
 
   getFrontStrainData(){
-    var strain1 = []
-    var strain2 = []
-    for(let i=0; i<this.allData.length; i++){
+    var strain1 = [];
+    var strain2 = [];
+    for (let i=0; i < this.allData.length; i++) {
       strain1[i] = this.allData[i].strain_front_lft_1;
       strain2[i] = this.allData[i].strain_front_rt_1;
     }
-    return [strain1,strain2];
+    return [strain1, strain2];
   }
 
   getFrontVibrationData(){
-    var vibration1 = []
-    var vibration2 = []
+    var vibration1 = [];
+    var vibration2 = [];
     for(let i=0; i<this.allData.length; i++){
       vibration1[i] = this.allData[i].vibration_front_lft;
       vibration2[i] = this.allData[i].vibration_front_rt;
     }
-    return [vibration1,vibration2];
+    return [vibration1, vibration2];
   }
 
   getBackStrainData(){
-    var strain3 = []
-    var strain4 = []
+    var strain3 = [];
+    var strain4 = [];
     for(let i=0; i<this.allData.length; i++){
       strain3[i] = this.allData[i].strain_center_1;
       strain4[i] = this.allData[i].strain_center_2;
@@ -66,11 +66,11 @@ export class GraphsComponent implements OnInit {
   getBackVibrationData(){
     var vibration3 = []
     var vibration4 = []
-    for(let i=0; i<this.allData.length; i++){
+    for(let i=0; i < this.allData.length; i++){
       vibration3[i] = this.allData[i].vibration_rear_lft;
       vibration4[i] = this.allData[i].vibration_rear_rt;
     }
-    return [vibration3,vibration4];
+    return [vibration3, vibration4];
   }
 
   updateCharts(){
@@ -82,13 +82,13 @@ export class GraphsComponent implements OnInit {
     this.chart = this.chartBuilder(this.canvas, [
       {
         data: strain1,
-        borderColor: "#5fd152",
+        borderColor: '#5fd152',
         fill: false,
         label: 'Frontal Strain 1'
       },
       {
         data: strain2,
-        borderColor: "#a073ff",
+        borderColor: '#a073ff',
         fill: false,
         label: 'Frontal Strain 2'
       }
@@ -97,13 +97,13 @@ export class GraphsComponent implements OnInit {
     this.chart2 = this.chartBuilder(this.canvas2, [
       {
         data: strain3,
-        borderColor: "#5fd152",
+        borderColor: '#5fd152',
         fill: false,
         label: 'Central Strain 1'
       },
       {
         data: strain4,
-        borderColor: "#a073ff",
+        borderColor: '#a073ff',
         fill: false,
         label: 'Central Strain 2'
       }
@@ -117,13 +117,13 @@ export class GraphsComponent implements OnInit {
     this.chart3 = this.chartBuilder(this.canvas3, [
       {
         data: vibration1,
-        borderColor: "#fc6625",
+        borderColor: '#fc6625',
         fill: false,
         label: 'Left Frontal Vibration'
       },
       {
         data: vibration2,
-        borderColor: "#3c75df",
+        borderColor: '#3c75df',
         fill: false,
         label: 'Right Frontal Vibration'
       }
@@ -132,13 +132,13 @@ export class GraphsComponent implements OnInit {
     this.chart4 = this.chartBuilder(this.canvas4, [
       {
         data: vibration3,
-        borderColor: "#fc6625",
+        borderColor: '#fc6625',
         fill: false,
         label: 'Left Rear Vibration'
       },
       {
         data: vibration4,
-        borderColor: "#3c75df",
+        borderColor: '#3c75df',
         fill: false,
         label: 'Right Rear Vibration'
       }
@@ -171,7 +171,7 @@ export class GraphsComponent implements OnInit {
   }
 
   generateXLabels(){
-    for(let i=1; i <= 30; i++){
+    for (let i=1; i <= 30; i++) {
         this.xlabels.push(i);
     }
   }
