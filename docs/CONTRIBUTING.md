@@ -11,7 +11,8 @@ email, or any other method with the owners of this repository before making a ch
    variables, exposed ports, useful file locations and container parameters.
 3. Increase the version numbers in any examples files and the README.md to the new version that this
    Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may the department leader to merge the Pull Request in once you have the sign-off.
+4. If Pull Request contains changes to functionaility (not docs) it must be Requested for the dev-testing branch
+5. You may the department leader to merge the Pull Request in once you have the sign-off.
 
 ## Adding an Issue process
 
