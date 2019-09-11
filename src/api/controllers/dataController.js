@@ -15,7 +15,7 @@ exports.getAll = function(req, res) {
       res.status(404).send(req.body);
     }
 
-    //make results
+    //make results.
     var resultJson = JSON.stringify(results);
     resultJson = JSON.parse(resultJson);
 

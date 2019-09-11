@@ -149,8 +149,8 @@ const create = () => {
  * pre: Tables must exist before using this function
  */
 const drop = () => {
-  dropTableBuggy();
   dropTableData();
+  dropTableBuggy();
 };
 
 /**
