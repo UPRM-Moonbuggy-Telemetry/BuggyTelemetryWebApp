@@ -16,4 +16,4 @@ module.exports = function(app) {
     .get(data.getId)
     .delete(data.removeId)
     .put(data.updateId);
-}
+};
