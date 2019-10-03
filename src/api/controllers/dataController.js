@@ -1,27 +1,33 @@
-const db = require('../models/dataModel.js').pool;
+const db = require('../models/dataModel.js').db;
+const sequelize = require('../config/db.config.js').Sequelize;
 const _ = require('lodash');
+const Buggy = require('../models/dataModel.js').Buggy;
+const Data = require('../models/dataModel.js').Data;
 
 /**
  Gets all the rows from the Data Base
  **/
 exports.getAll = function (req, res) {
-  const table = req.params['table']; // Respective Buggy table
+  const buggy_name = req.params['table'].toLowerCase(); // Respective Buggy name
 
-  //query the DB using prepared statement
-  const queryText = 'SELECT * from ' + table;
-  const results = db.query(queryText, function (error, results, fields) {
-    //if error, print blank results
-    if (error) {
-      res.status(404).send(req.body);
+  // Find all the data of the respective buggy.
+  Buggy.findOne({include: [{model: Data}] ,
+    where: {
+        buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
+      }
+    })
+  // If the query was a success, then send all data rows of the respective buggy as the result.
+    .then(buggy => {
+      if (buggy) {
+      const result = JSON.stringify(buggy['dataValues']['data']);
+      res.status(200).send(JSON.parse(result));
     }
-
-    //make results.
-    var resultJson = JSON.stringify(results);
-    resultJson = JSON.parse(resultJson);
-
-    //send JSON to Express
-    res.send(resultJson);
-  });
+    })
+    // If there was an error in the query, then return 404 and print out the error.
+    .catch(error => {
+      console.log('Could not retrieve Buggy Data' + error);
+      res.status(404).send(req.body);
+    });
 };
 
 /**
