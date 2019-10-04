@@ -131,6 +131,7 @@ exports.addData = function (req, res) {
             'OBC_date': value.OBC_date});
         });
 
+        // Create all Data values received at the same time.
         Data.bulkCreate(values).then(data => {
           const result = JSON.stringify(data);
           res.status(201).send(JSON.parse(result));
@@ -152,9 +153,9 @@ exports.addData = function (req, res) {
  **/
 exports.getId = function (req, res) {
   const paramId = req.params['id'];
-  const table = req.params['table']; // Respective Buggy table
+  const buggy_name = req.params['table']; // Respective Buggy name
 
-  const queryText = 'SELECT * FROM ' + table + ' WHERE id = ?';
+  const queryText = 'SELECT * FROM ' + buggy_name + ' WHERE id = ?';
   db.query(queryText, [paramId], function (err, result) {
     if (err) res.status(404).send(req.body);
 
