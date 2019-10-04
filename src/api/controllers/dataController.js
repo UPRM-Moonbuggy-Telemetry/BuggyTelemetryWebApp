@@ -13,15 +13,15 @@ exports.getAll = function (req, res) {
   // Find all the data of the respective buggy.
   Buggy.findOne({include: [{model: Data}] ,
     where: {
-        buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
-      }
-    })
+      buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
+    }
+  })
   // If the query was a success, then send all data rows of the respective buggy as the result.
     .then(buggy => {
       if (buggy) {
-      const result = JSON.stringify(buggy['dataValues']['data']);
-      res.status(200).send(JSON.parse(result));
-    }
+        const result = JSON.stringify(buggy['dataValues']['data']);
+        res.status(200).send(JSON.parse(result));
+      }
     })
     // If there was an error in the query, then return 404 and print out the error.
     .catch(error => {
@@ -40,49 +40,66 @@ exports.getLastValues = function (req, res) {
   Buggy.findOne({include: [{model: Data}],
     where: {
       buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
-    },
-    order: [
-      ['id', 'DESC']
-    ],
-    limit : 30
-  })
-    .then(buggy => {})
-    .catch(error => {});
-
-
-  const rowsNumQuery = `SELECT COUNT(*) As count FROM ` + buggy_name;
-
-  //Outer query
-  const results = db.query(rowsNumQuery, function (error, result) {
-
-    if (error) {
-      res.status(404).send(req.body);
     }
+  }).then(buggy => {
 
-    var json = JSON.stringify(result);
-    json = JSON.parse(json);
-    var rowsNum = json[0].count;
-
-    //If the DB have >30 rows we choose the first 30's
-    if (rowsNum > 30) {
-      rowsNum = 30;
-    }
-
-    const queryText = `SELECT * from (SELECT * FROM ` + buggy_name + ` ORDER BY id
-        DESC LIMIT ` + String(rowsNum) + `) sub`;
-
-    //Inner query
-    const rslt = db.query(queryText, function (error, results, fields) {
-      if (error) {
+    // Find all the data related to buggy.
+    if (buggy) {
+      Data.findAll({
+        where: {
+          'buggyId': buggy['id'],
+        },
+        order: [['id', 'DESC']],
+        limit: 30,
+      }).then(dataRows => {
+        const result = JSON.stringify(dataRows);
+        console.log('Successfully fetched the most recent 30 data rows of %' % buggy_name);
+        res.status(200).send(JSON.parse(result));
+      }).catch(error => {
+        console.log(('Could not fetch the 30 most recent data rows of %. ' % buggy_name) + error);
         res.status(404).send(req.body);
-      }
+      });
+    }
 
-      var resultJson = JSON.stringify(results);
-      resultJson = JSON.parse(resultJson);
-
-      res.send(resultJson);
-    });
+  }).catch(error => {
+    console.log(('Could not find the respective buggy: %. ' % buggy_name) + error);
+    res.status(404).send(req.body);
   });
+
+
+  // const rowsNumQuery = `SELECT COUNT(*) As count FROM ` + buggy_name;
+  //
+  // //Outer query
+  // const results = db.query(rowsNumQuery, function (error, result) {
+  //
+  //   if (error) {
+  //     res.status(404).send(req.body);
+  //   }
+  //
+  //   var json = JSON.stringify(result);
+  //   json = JSON.parse(json);
+  //   var rowsNum = json[0].count;
+  //
+  //   //If the DB have >30 rows we choose the first 30's
+  //   if (rowsNum > 30) {
+  //     rowsNum = 30;
+  //   }
+  //
+  //   const queryText = `SELECT * from (SELECT * FROM ` + buggy_name + ` ORDER BY id
+  //       DESC LIMIT ` + String(rowsNum) + `) sub`;
+  //
+  //   //Inner query
+  //   const rslt = db.query(queryText, function (error, results, fields) {
+  //     if (error) {
+  //       res.status(404).send(req.body);
+  //     }
+  //
+  //     var resultJson = JSON.stringify(results);
+  //     resultJson = JSON.parse(resultJson);
+  //
+  //     res.send(resultJson);
+  //   });
+  // });
 };
 
 /**
