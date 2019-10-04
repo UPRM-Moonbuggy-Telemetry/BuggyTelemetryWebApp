@@ -35,8 +35,22 @@ exports.getAll = function (req, res) {
  gets the number of rows and the inner query gets the data.
  **/
 exports.getLastValues = function (req, res) {
-  const table = req.params['table'];
-  const rowsNumQuery = `SELECT COUNT(*) As count FROM ` + table;
+  const buggy_name = req.params['table'].toLowerCase();
+
+  Buggy.findOne({include: [{model: Data}],
+    where: {
+      buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
+    },
+    order: [
+      ['id', 'DESC']
+    ],
+    limit : 30
+  })
+    .then(buggy => {})
+    .catch(error => {});
+
+
+  const rowsNumQuery = `SELECT COUNT(*) As count FROM ` + buggy_name;
 
   //Outer query
   const results = db.query(rowsNumQuery, function (error, result) {
@@ -54,7 +68,7 @@ exports.getLastValues = function (req, res) {
       rowsNum = 30;
     }
 
-    const queryText = `SELECT * from (SELECT * FROM ` + table + ` ORDER BY id
+    const queryText = `SELECT * from (SELECT * FROM ` + buggy_name + ` ORDER BY id
         DESC LIMIT ` + String(rowsNum) + `) sub`;
 
     //Inner query
@@ -75,12 +89,7 @@ exports.getLastValues = function (req, res) {
  This function adds new rows to the Data Base
  **/
 exports.addData = function (req, res) {
-  const table = req.params['table']; // Respective Buggy table
-
-  const queryText = 'INSERT INTO ' + table + ' (strain_front_lft_1, strain_front_lft_2, strain_front_lft_3, ' +
-    'strain_front_rt_1, strain_front_rt_2, strain_front_rt_3, strain_center_1, strain_center_2, strain_center_3, ' +
-    'vibration_front_lft, vibration_front_rt, vibration_rear_lft, vibration_rear_rt, vibration_center, battery_status, ' +
-    'latitude, longitude, GSC_time, GSC_date, OBC_time, OBC_date) VALUES ?';
+  const buggy_name = req.params['table'].toLowerCase(); // Respective Buggy name
 
   var values = [];
   var dt = new Date();
@@ -88,22 +97,54 @@ exports.addData = function (req, res) {
   var month = dt.getMonth() + 1;
   var date = dt.getFullYear().toString() + "-" + month.toString() + "-" + dt.getDate().toString();
 
-  _.forEach(req.body, function (value) {
-    values.push([value.strain_front_lft_1, value.strain_front_lft_2, value.strain_front_lft_3,
-      value.strain_front_rt_1, value.strain_front_rt_2, value.strain_front_rt_3, value.strain_center_1,
-      value.strain_center_2, value.strain_center_3, value.vibration_front_lft, value.vibration_front_rt,
-      value.vibration_rear_lft, value.vibration_rear_rt, value.vibration_center, value.battery_status,
-      value.latitude, value.longitude, time, date, value.OBC_time, value.OBC_date]);
-  });
-
-  db.query(queryText, [values], function (err, result) {
-    if (err) {
-      res.status(500).send(req.body);
-    } else {
-      console.log("Number of records inserted: " + result.affectedRows);
-      res.status(201).send(result);
+  Buggy.findOne({include: [{model: Data}] ,
+    where: {
+      buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
     }
-  });
+  })
+  // If the query was a success, then send all data rows of the respective buggy as the result.
+    .then(buggy => {
+      if (buggy) {
+        _.forEach(req.body, function (value) {
+          values.push({
+            'buggyId': buggy['id'],
+            'strain_front_lft_1': value.strain_front_lft_1,
+            'strain_front_lft_2': value.strain_front_lft_2,
+            'strain_front_lft_3': value.strain_front_lft_3,
+            'strain_front_rt_1': value.strain_front_rt_1,
+            'strain_front_rt_2': value.strain_front_rt_2,
+            'strain_front_rt_3': value.strain_front_rt_3,
+            'strain_center_1': value.strain_center_1,
+            'strain_center_2': value.strain_center_2,
+            'strain_center_3': value.strain_center_3,
+            'vibration_front_lft': value.vibration_front_lft,
+            'vibration_front_rt': value.vibration_front_rt,
+            'vibration_rear_lft': value.vibration_rear_lft,
+            'vibration_rear_rt': value.vibration_rear_rt,
+            'vibration_center': value.vibration_center,
+            'battery_status': value.battery_status,
+            'latitude': value.latitude,
+            'longitude': value.longitude,
+            'GSC_time': time,
+            'GSC_date': date,
+            'OBC_time': value.OBC_time,
+            'OBC_date': value.OBC_date});
+        });
+
+        Data.bulkCreate(values).then(data => {
+          const result = JSON.stringify(data);
+          res.status(201).send(JSON.parse(result));
+        }).catch(error => {
+          console.log('Could not create Data rows' + error);
+          res.status(500).send(req.body);
+        });
+      }
+    })
+    // If there was an error in the query, then return 404 and print out the error.
+    .catch(error => {
+      console.log('Could not find respective Buggy' + error);
+      res.status(404).send(req.body);
+    });
 };
 
 /**
