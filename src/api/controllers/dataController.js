@@ -19,8 +19,7 @@ exports.getAll = function (req, res) {
   // If the query was a success, then send all data rows of the respective buggy as the result.
     .then(buggy => {
       if (buggy) {
-        const result = JSON.stringify(buggy['dataValues']['data']);
-        res.status(200).send(JSON.parse(result));
+        res.status(200).send(buggy['dataValues']['data']);
       }
     })
     // If there was an error in the query, then return 404 and print out the error.
@@ -37,7 +36,7 @@ exports.getAll = function (req, res) {
 exports.getLastValues = function (req, res) {
   const buggy_name = req.params['table'].toLowerCase();
 
-  Buggy.findOne({include: [{model: Data}],
+  Buggy.findOne({
     where: {
       buggy_data: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + buggy_name + '%')
     }
@@ -52,9 +51,8 @@ exports.getLastValues = function (req, res) {
         order: [['id', 'DESC']],
         limit: 30,
       }).then(dataRows => {
-        const result = JSON.stringify(dataRows);
         console.log('Successfully fetched the most recent 30 data rows of %' % buggy_name);
-        res.status(200).send(JSON.parse(result));
+        res.status(200).send(dataRows);
       }).catch(error => {
         console.log(('Could not fetch the 30 most recent data rows of %. ' % buggy_name) + error);
         res.status(404).send(req.body);
@@ -65,41 +63,6 @@ exports.getLastValues = function (req, res) {
     console.log(('Could not find the respective buggy: %. ' % buggy_name) + error);
     res.status(404).send(req.body);
   });
-
-
-  // const rowsNumQuery = `SELECT COUNT(*) As count FROM ` + buggy_name;
-  //
-  // //Outer query
-  // const results = db.query(rowsNumQuery, function (error, result) {
-  //
-  //   if (error) {
-  //     res.status(404).send(req.body);
-  //   }
-  //
-  //   var json = JSON.stringify(result);
-  //   json = JSON.parse(json);
-  //   var rowsNum = json[0].count;
-  //
-  //   //If the DB have >30 rows we choose the first 30's
-  //   if (rowsNum > 30) {
-  //     rowsNum = 30;
-  //   }
-  //
-  //   const queryText = `SELECT * from (SELECT * FROM ` + buggy_name + ` ORDER BY id
-  //       DESC LIMIT ` + String(rowsNum) + `) sub`;
-  //
-  //   //Inner query
-  //   const rslt = db.query(queryText, function (error, results, fields) {
-  //     if (error) {
-  //       res.status(404).send(req.body);
-  //     }
-  //
-  //     var resultJson = JSON.stringify(results);
-  //     resultJson = JSON.parse(resultJson);
-  //
-  //     res.send(resultJson);
-  //   });
-  // });
 };
 
 /**
@@ -150,8 +113,8 @@ exports.addData = function (req, res) {
 
         // Create all Data values received at the same time.
         Data.bulkCreate(values).then(data => {
-          const result = JSON.stringify(data);
-          res.status(201).send(JSON.parse(result));
+          // const result = JSON.stringify(data);
+          res.status(201).send(data);
         }).catch(error => {
           console.log('Could not create Data rows' + error);
           res.status(500).send(req.body);

@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const db = new Sequelize('buggy_db', 'buggy_user', 'mo*nbu66y', {
   host: 'localhost',
   dialect: 'postgres',
+  logging: false,
 
   pool: {
     max: 5,
