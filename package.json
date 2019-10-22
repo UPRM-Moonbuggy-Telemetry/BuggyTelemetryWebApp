@@ -28,6 +28,7 @@
     "lodash": "^4.17.11",
     "make-runnable": "^1.3.6",
     "mysql": "^2.16.0",
+    "ng-canvas-gauges": "^6.0.4",
     "ngx-bootstrap": "^2.0.5",
     "rxjs": "6.4.0",
     "ws": "^6.2.0",

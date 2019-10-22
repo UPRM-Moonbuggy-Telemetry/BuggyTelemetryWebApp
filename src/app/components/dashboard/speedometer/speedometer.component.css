@@ -1,0 +1,10 @@
+#speedometer-box{
+    border-left: 6px solid red;
+    background-color: lightgrey;
+    position: relative;
+    left: 619px;
+    top: 270px;
+  }
+  
+  #speed_values{
+  }
