@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AlternateGpsComponent } from './components/dashboard/alternate-gps/alternate-gps.component';
 
 import {GaugesModule} from 'ng-canvas-gauges';
+import { SpeedometerComponent } from './components/dashboard/speedometer/speedometer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {GaugesModule} from 'ng-canvas-gauges';
     DateComponent,
     SignalComponent,
     BuggysComponent,
-    AlternateGpsComponent
+    AlternateGpsComponent,
+    SpeedometerComponent
   ],
   imports: [
     BrowserModule,

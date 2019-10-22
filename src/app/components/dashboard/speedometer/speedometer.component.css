@@ -1,10 +1,5 @@
-#speedometer-box{
-    border-left: 6px solid red;
-    background-color: lightgrey;
+#speed-gauge{
     position: relative;
-    left: 619px;
-    top: 270px;
-  }
-  
-  #speed_values{
-  }
+    left: 685px;
+    top: 250px;
+}

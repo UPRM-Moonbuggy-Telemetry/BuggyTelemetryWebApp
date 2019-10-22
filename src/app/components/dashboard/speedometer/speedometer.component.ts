@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteConfigLoadEnd } from '@angular/router';
-// import {DataService} from '../../../data.service';
 
 @Component({
   selector: 'app-speedometer',
@@ -16,11 +14,11 @@ export class SpeedometerComponent implements OnInit {
   ngOnInit() {
 
     setInterval(() => {
-      this.speed = getRandSpeed(0, 140);
-      }, 1000);
+      this.speed = getRandSpeed(0.0,100.0);
+    }, 1000); 
 
-    function getRandSpeed(min, max) {
-      return Math.round((Math.random() * (max - min) ) + min);
+    function getRandSpeed(min, max){
+      return Math.round((Math.random() * (max - min)) + min);
     }
 
   }
