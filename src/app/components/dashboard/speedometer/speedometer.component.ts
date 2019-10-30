@@ -14,7 +14,7 @@ export class SpeedometerComponent implements OnInit {
   ngOnInit() {
 
     setInterval(() => {
-      this.speed = getRandSpeed(0.0,100.0);
+      this.speed = getRandSpeed(0.0,40.0);
     }, 1000); 
 
     function getRandSpeed(min, max){
