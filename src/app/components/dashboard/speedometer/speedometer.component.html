@@ -1,0 +1,24 @@
+<!-- <radial-gauge id="speed-gauge" width="150" height="150" units="MPH" value={{speed}} maxValue="40"></radial-gauge> -->
+
+<canvas #canvas
+        id="speed-gauge"
+        data-type="radial-gauge"
+        data-width="150"
+        data-height="150"
+        data-units="MPH"
+        data-value=""
+        data-max-value="20"
+        data-major-ticks="0,5,10,15,20"
+        data-minor-ticks="5"
+        data-value-int="2"
+        data-highlights='[
+        { "from": 10, "to": 15, "color": "rgba(255,255,0,.45)" },
+        { "from": 0, "to": 10, "color": "rgba(0,255,0,.15)" },
+        { "from": 15, "to": 20, "color": "rgba(255,0,0,.25)" }
+        ]'
+        data-color-value-box-shadow="false"
+        data-color-value-box-background="rgba(0,0,255,.1)"
+        data-value-box-stroke="1.5"
+        data-color-needle="rgba(0,0,255,.5)"
+        data-color-needle-end="rgba(0,0,255,.5)"
+></canvas>
