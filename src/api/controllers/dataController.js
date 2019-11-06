@@ -15,7 +15,7 @@ exports.getAll = function (req, res) {
       res.status(404).send(req.body);
     }
 
-    //make results
+    //make results.
     var resultJson = JSON.stringify(results);
     resultJson = JSON.parse(resultJson);
 
@@ -155,7 +155,7 @@ exports.updateId = function (req, res) {
  **/
 exports.removeId = function (req, res) {
   const paramId = req.params['id'];
-  const table = req.params['table']; // Respective Buggy table
+  const table = req.params['table']; // Respective Buggy or Data table
 
   const queryText = "DELETE FROM " + table + " WHERE id = ?";
   db.query(queryText, [paramId], function (err, result) {
