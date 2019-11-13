@@ -18,6 +18,9 @@ import { BuggysComponent } from './components/dashboard/buggys/buggys.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AlternateGpsComponent } from './components/dashboard/alternate-gps/alternate-gps.component';
 
+import {GaugesModule} from 'ng-canvas-gauges';
+import { SpeedometerComponent } from './components/dashboard/speedometer/speedometer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,12 +35,14 @@ import { AlternateGpsComponent } from './components/dashboard/alternate-gps/alte
     DateComponent,
     SignalComponent,
     BuggysComponent,
-    AlternateGpsComponent
+    AlternateGpsComponent,
+    SpeedometerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GaugesModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
