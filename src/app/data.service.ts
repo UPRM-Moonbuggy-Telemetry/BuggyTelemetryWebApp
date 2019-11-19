@@ -89,4 +89,9 @@ export class DataService implements OnInit {
     this.ngOnInit();
     return this._http.put<BuggyData>('http://localhost:3000/api/' + this.table + '/' + id, data);
   }
+
+  updateSpeedDataRand(min: number, max: number): number {
+    return Math.round((Math.random() * (max - min)) + min);
+  }
+
 }
