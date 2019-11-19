@@ -1,4 +1,28 @@
-.map{
-    width: 400px;
-    height: 300px;
-  }
+html,
+body {
+  margin: 0;
+}
+
+/* #canvas{
+  width:250px;
+  height: 400px; 
+} */
+
+/* #strainGraph {
+  /* max-height: 250px;
+  max-width: 400x; */
+  /* position: center;
+  bottom: 0;
+  right: 0;
+  width: 0;
+} */
+
+/* .segment{
+  padding: 100px;
+  text-align: right;
+} */ 
+
+#chart {
+  height: 200px;
+  width: 200px;
+}

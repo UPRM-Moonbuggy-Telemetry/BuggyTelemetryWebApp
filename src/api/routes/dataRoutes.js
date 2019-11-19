@@ -1,10 +1,10 @@
-module.exports = function(app) {
+module.exports = function (app) {
   var data = require('../controllers/dataController');
 
-/**
-  Methods get called depending on request type and url.
-  table: this parameter must be NewBuggy or OldBuggy
-**/
+  /**
+   Methods get called depending on request type and url.
+   table: this parameter must be NewBuggy or OldBuggy
+   **/
   app.route('/api/:table')
     .get(data.getAll)
     .post(data.addData);
