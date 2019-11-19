@@ -13,7 +13,10 @@ module.exports = function (app) {
     .get(data.getLastValues);
 
   app.route('/api/:table/:id')
-    .get(data.getId)
+    .get(data.getDataById)
     .delete(data.removeId)
-    .put(data.updateId);
+    .put(data.updateDataById);
+
+  app.route('/api/:table/timeStamp/:hour')
+    .get(data.getDataByTimeStamp)
 };
