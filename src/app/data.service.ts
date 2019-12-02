@@ -41,52 +41,53 @@ export class DataService implements OnInit {
 
   table: string;
   sub: any;
+  url = 'http://localhost:3000/api/';
 
   constructor(private _http: HttpClient, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
-        /**
-          If the query string parameter 'name' is not found, 'New Buggy' is the
-          default. Useful in the case that a Buggy haven't been chosen in the
-          dropdown options
-        **/
-        this.table = params.name || 'NewBuggy';
-      });
+      /**
+       If the query string parameter 'name' is not found, 'New Buggy' is the
+       default. Useful in the case that a Buggy haven't been chosen in the
+       dropdown options
+       **/
+      this.table = params.name || 'NewBuggy';
+    });
   }
 
   /**
-    This method send a request to the specified route. The '/recent' path is
-    used in order to get the most recent data
-  **/
+   This method send a request to the specified route. The '/recent' path is
+   used in order to get the most recent data
+   **/
   getAllData(): Observable<BuggyData[]> {
     this.ngOnInit();
-    return this._http.get<BuggyData[]>('http://localhost:3000/api/' + this.table + '/recent');
+    return this._http.get<BuggyData[]>(this.url + this.table + '/recent');
   }
 
   getDataById(id: number): Observable<BuggyData> {
     this.ngOnInit();
-    return this._http.get<BuggyData>('http://localhost:3000/api/' + this.table + '/' + id);
+    return this._http.get<BuggyData>(this.url + this.table + '/' + id);
   }
 
   deleteData(id: number): Observable<{}> {
     this.ngOnInit();
-    return this._http.delete('http://localhost:3000/api/' + this.table + '/' + id);
+    return this._http.delete(this.url + this.table + '/' + id);
   }
 
   addData(data: BuggyData): Observable<BuggyData> {
     this.ngOnInit();
-    return this._http.post<BuggyData>('http://localhost:3000/api/' + this.table, data);
+    return this._http.post<BuggyData>(this.url + this.table, data);
   }
 
   addMultipleData(data: BuggyData[]): Observable<BuggyData[]> {
     this.ngOnInit();
-    return this._http.post<BuggyData[]>('http://localhost:3000/api/' + this.table, data);
+    return this._http.post<BuggyData[]>(this.url + this.table, data);
   }
 
   updateData(id: number, data: BuggyData): Observable<BuggyData> {
     this.ngOnInit();
-    return this._http.put<BuggyData>('http://localhost:3000/api/' + this.table + '/' + id, data);
+    return this._http.put<BuggyData>(this.url + this.table + '/' + id, data);
   }
 }
