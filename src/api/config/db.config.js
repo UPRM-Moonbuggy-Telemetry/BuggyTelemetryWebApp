@@ -1,4 +1,4 @@
-import {env_var} from 'src/environments/env_var'
+import {env_var} from 'env_var'
 
 const Sequelize = require('sequelize');
 const db = new Sequelize(env_var.DB_NAME, env_var.DB_USER, env_var.DB_PASSWORD, {
