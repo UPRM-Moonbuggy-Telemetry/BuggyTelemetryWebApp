@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('../config/db.config').db;
+const db = require('../config/dbConfig').db;
 
 db.authenticate()
   .then(() => {

@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const sequelize = require('../config/db.config.js').Sequelize;
+const sequelize = require('../config/dbConfig.js').Sequelize;
 const Buggy = require('../models/dataModel.js').Buggy;
 const Data = require('../models/dataModel.js').Data;
 
