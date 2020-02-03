@@ -1,5 +1,5 @@
 # PostgreSQL setup
-**IMPORTANT:** Make sure to run ```npm install``` for the installation of dependencies for Postgres and Sequelize.
+**IMPORTANT:** Make sure to run ```npm install``` for the installation of dependencies for Postgres and Sequelize. Also, make sure to copy *setup_db_env.js* file from the team [drive](https://drive.google.com/drive/u/1/folders/15LJI6dl-cDeiw7PLj_JIWC2deAn-djXg) and paste it in the project under */src/api/config/*.
 
 Download PostgreSQL [here](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads). Make sure to download version **10.XX**.
 
