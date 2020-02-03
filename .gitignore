@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # environment variables
-/env_var.js
+src/api/config/setup_db_env.js
 
 # compiled output
 /dist
