@@ -3,6 +3,10 @@ const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
 const dataRoutes = require('./api/routes/dataRoutes');//importing routes
+const setup_db_env = require('./api/config/setup_db_env');
+
+// setup database environment variables
+setup_db_env();
 
 const app = express();//init express
 
