@@ -3,7 +3,10 @@ const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
 const dataRoutes = require('./api/routes/dataRoutes');//importing routes
-const dataDB = require('./api/models/dataModel.js');//db model
+const setup_db_env = require('./api/config/setup_db_env');
+
+// setup database environment variables
+setup_db_env();
 
 const app = express();//init express
 
@@ -11,6 +14,7 @@ const app = express();//init express
 const port = process.env.PORT || 3000;
 
 //setup of angular files dir (similar to setting up a static file)
+// not found modify if need
 app.use(express.static(__dirname + '../../dist/buggy-gui-angularPort'));
 
 //in the docs for body parser middleware

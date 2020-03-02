@@ -1,17 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('buggy_db', 'buggy_user', 'mo*nbu66y', {
-  host: 'localhost',
-  dialect: 'postgres',
+const db = require('../config/dbConfig').db;
 
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
-});
-
-sequelize.authenticate()
+db.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
   })
@@ -19,7 +9,7 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-const Buggy = sequelize.define('buggy', {
+const Buggy = db.define('buggy', {
   name: {
     type: Sequelize.STRING(15),
   }
@@ -28,7 +18,7 @@ const Buggy = sequelize.define('buggy', {
   freezeTableName: true,
 });
 
-const Data = sequelize.define('data', {
+const Data = db.define('data', {
   buggyId: {
     type: Sequelize.INTEGER,
     references: {
@@ -104,13 +94,27 @@ const Data = sequelize.define('data', {
   freezeTableName: true
 });
 
+Buggy.hasMany(Data, {foreignKey: 'buggyId'});
+Data.belongsTo(Buggy, {foreignKey: 'buggyId'});
+
+const values = [
+  {
+    'name': 'NewBuggy'
+  },
+  {
+    'name': 'OldBuggy'
+  }
+];
+
 
 /**
  * This function creates the table with the specified parameters
  */
 const createTableBuggy = () => {
+  // Find the correct way to create table values.
   Buggy.sync().then(() => {
     console.log("Buggy table created successfully");
+    Buggy.bulkCreate(values);
   });
 };
 
@@ -118,7 +122,6 @@ const createTableData = () => {
   Data.sync().then(() => {
     console.log("Data table created successfully");
   });
-
 };
 
 const dropTableData = () => {
@@ -140,8 +143,11 @@ const dropTableBuggy = () => {
  * createTableNewBuggy or createTableBuggyData only
  */
 const create = () => {
-  createTableBuggy();
-  createTableData();
+  db.sync({ force: true })
+    .then(() => {
+      Buggy.bulkCreate(values);
+      Buggy.sync();
+    });
 };
 
 /**
@@ -149,8 +155,7 @@ const create = () => {
  * pre: Tables must exist before using this function
  */
 const drop = () => {
-  dropTableData();
-  dropTableBuggy();
+  db.sync().then(() => { return db.drop() });
 };
 
 /**
@@ -165,7 +170,7 @@ const reset = () => {
 };
 
 module.exports = {
-  pool: sequelize,
+  pool: db,
   create,
   reset,
   drop,
