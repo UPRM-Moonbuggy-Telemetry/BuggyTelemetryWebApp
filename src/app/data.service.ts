@@ -91,6 +91,7 @@ export class DataService implements OnInit {
     return this._http.put<BuggyData>(this.url + this.table + '/' + id, data);
   }
 
+  /* Test method for speedometer */
   updateSpeedDataRand(min: number, max: number): number {
     return Math.round((Math.random() * (max - min)) + min);
   }

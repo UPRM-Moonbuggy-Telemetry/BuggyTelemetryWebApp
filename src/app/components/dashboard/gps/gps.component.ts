@@ -33,9 +33,13 @@ export class GpsComponent implements OnInit {
       });
     }, 1000);
 
+    // setInterval(() => {
+    //   this.map.refresh({x: this.allData[0].latitude, y: this.allData[0].longitude}) ;
+    //   }, 1000);
+
     setInterval(() => {
-      this.map.refresh({x: this.allData[0].latitude, y: this.allData[0].longitude}) ;
-      }, 1000);
+      this.map.refresh({x: getRndNumber(34.709558, 34.711180), y: getRndNumber(-86.655645, -86.652185)});
+    }, 1000);
   }
 
 }
