@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import {DataService} from '../../../data.service';
 
 @Component({
   selector: 'app-speedometer',
@@ -11,18 +12,14 @@ export class SpeedometerComponent implements OnInit {
 
   speed = 0.0;
 
-  constructor() { }
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
 
     setInterval(() => {
-      this.speed = getRandSpeed(0.0,20.0);
+      this.speed = this._dataService.updateSpeedDataRand(0, 20);
       this.canvas.nativeElement.setAttribute('data-value', this.speed.toString());
     }, 1000); 
-
-    function getRandSpeed(min, max){
-      return Math.round((Math.random() * (max - min)) + min);
-    }
 
   }
 
