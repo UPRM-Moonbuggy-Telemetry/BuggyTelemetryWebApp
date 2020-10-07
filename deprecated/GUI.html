@@ -2,383 +2,507 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<meta content="Alexander, Sebastian, Amanda, Javier" name="autor">
-	<meta content="GUI de Telemetria" name="Descripcion">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta content="Alexander, Sebastian, Amanda, Javier" name="autor">
+    <meta content="GUI de Telemetria" name="Descripcion">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- El Selector universal * es lento de por si -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- bootstrap-css -->
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<!-- //bootstrap-css -->
-	<!-- Custom CSS -->
-	<link href="/graficas/Amanda/css/style.css" rel='stylesheet' type='text/css' />
-	<!-- font CSS -->
-	<link href='fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-	<!-- font-awesome icons -->
-	<link rel="stylesheet" href="/graficas/Amanda/css/font.css" type="text/css"/>
-	<link href="/graficas/Amanda/css/font-awesome.css" rel="stylesheet"> 
-	<!-- //font-awesome icons -->
-	<script src="/graficas/Amanda/js/jquery2.0.3.min.js"></script>
-	<!-- charts -->
-	<script src="/graficas/Amanda/js/raphael-min.js"></script>
-	<script src="/graficas/Amanda/js/morris.js"></script>
-	<link rel="stylesheet" href="/graficas/Amanda/css/morris.css">
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!-- //bootstrap-css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="/graficas/Amanda/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <link href='fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="/graficas/Amanda/css/font.css" type="text/css"/>
+    <link href="/graficas/Amanda/css/font-awesome.css" rel="stylesheet"> 
+    <!-- //font-awesome icons -->
+    <script src="/graficas/Amanda/js/jquery2.0.3.min.js"></script>
+    <!-- charts -->
+    <script src="/graficas/Amanda/js/raphael-min.js"></script>
+    <script src="/graficas/Amanda/js/morris.js"></script>
+    <link rel="stylesheet" href="/graficas/Amanda/css/morris.css">
    
     <style type="text/css">
-	    body{
-	         background-color: #696969;
-	         }
+        body {
+             background-color:  #8c332f /* #696969*/ ;
+        }
 
         .canvas{
         -moz-user-select: none;
         -webkit-user-select: none;
         -ms-user-select: none;
         }
+        
+        .navbar{
+            background-color: #580016;
+        }
          
         .sponsor{
-        	background-color: #DCDCDC;
-    	    	color: 	#32CD32;
-
+            background-color: #DCDCDC;
+                color:  #580016 /*  #32CD32*/;
         }
+
+
     .navbar{
 
-    	 padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 25%;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+
     }
+
+    .collapse-navbar-collapse{
+        align-content: center;
+    }
+
     .navbar-nav li a:hover {
-    	color:  #1abc9c;
+        color:  #1abc9c;
     }
     .top-row{
-        background-color: #00ff00;
+        background-color: #8c332f/* #00ff00*/;
         text-align: center;
         padding:5px;
     }
     
     .center-row{
-    	background-color: #4d4d4d; 
-    	text-align: center;
+        background-color: white; 
+        text-align: center;
         padding:5px;
+        align-content: center;
+        align-items: center;
+    }
+
+    .carousel-inner{
+        height: 450px;
+        width: 700px;
+        /*align-content: center;*/
+        /*align-items: center;*/
+    }
+
+    .center-rowCar{
+        align-items: center;
+        width: 50%;
+        margin-left: 50%;
+    }
+
+    .carousel-inner{
+        height: 500px;
+        align-content: center;
+        align-items: center;
+    }
+
+    .col-md-4{
+        height: 100;
+        width: 200;
+        align-items: center;
+    }
+    .col-sm-4{
+        height: 100;
+    }
+
+    .myCarousel{
+        height: 100px;
+        align-content: center;
+        margin-left: 50%;
+        width: 90px;
+    }
+
+    .col-md-6{
+        margin-bottom: 50px;
     }
     
     .row.no-gutter {
-	  margin-left: 0;
-	  margin-right: 0;
-		}
-	
-	.row.no-gutter [class*='col-']:not(:first-child),
-	.row.no-gutter [class*='col-']:not(:last-child) {
-	  padding-right: 0;
-	  padding-left: 0;
-	}
-	
-	.footer {
-  		position: fixed;
-  		width: 100%;
-  		bottom: 0;
-  		padding: 1rem;
-  		background-color: #00ff00;
-  		text-align: center;
-  		overflow: hidden;
-	}
-	
-	.chart-size{
-		
-		 height: 170px;
-	}
-	  #map {
+      margin-left: 0;
+      margin-right: 0;
+        }
+    
+
+    .row.no-gutter [class*='col-']:not(:first-child),
+    .row.no-gutter [class*='col-']:not(:last-child) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .item{
+        align-items: center;
+        width: 200px;
+    }
+    
+    .row.center-row.no-gutter{
+        align-content: center;
+    }
+
+    .footer {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        padding: 1rem;
+        background-color: #580016;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .col-md-4{
+        justify-items: center;
+        width: 100%;
+    }
+
+    .col-md-6-carousel{
+        margin-top: 45%;
+        width: 600px;
         height: 400px;
+    }
+    
+    .chart-size{
+        
+         height: 170px;
+    }
+    .centerOned{
+        align-content: center;
+        width: 50%;
+    
+    }
+      #map {
+        height: 500px;
+        width: 600px;
       }
     </style>
 
 </head>
 
 <body class="dashboard-page">
-<!--Nav Bar-->	
-	<div class="row no-gutter">
+<!--Nav Bar-->  
+    <div class="row no-gutter">
         <header>
-        	 <nav class="navbar navbar-inverse">
-        	 	<div class="container-fluid">
-        	 		<div class="navbar-header">
-        	 			<button type="button" class="navbar-toggle" data-toggle="collapse" data target="#MyNavbar">
-        	 			<span class="icon-bar"></span>
-        	 			<span class="icon-bar"></span>
-        				<span class="icon-bar"></span>
-        				</button>
-        				
-        				
-        			<a class="navbar-brand" href="#">UPRM Moonbuggy Project Design <br/><i>Telemetry Department</i></a>
-        			<a class="navbar-right" href="#">
-						<img src="graficas/Amanda/images/logoColegio.gif" height="80" width="75"></img>
-						<img src="graficas/Amanda/images/LogoNasa.jpg" height="70" width="75"></img>
-        			</a>
-        			<a class="navbar-left" href="#">
-        				<img src="http://static.wixstatic.com/media/3a09a9_f28a18096e4f42c9acd87e87b352217e.png/v1/fill/w_208,h_181,al_c,usm_0.66_1.00_0.01/3a09a9_f28a18096e4f42c9acd87e87b352217e.png" height="80" width="75">
-        			</a>
-        			</div>
-        			<div class="collapse navbar-collapse" id="MyNavbar">
-        				<ul class="nav navbar-nav navbar-right">
-        					<li class="dropdown">
-        						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        							Buggy's
-        							<span class="caret"></span>
-        						</a>
-						        <ul class="dropdown-menu">
-									<li><a href="#">3 Wheeled Buggy</a></li>
-									<li><a href="#">4 Wheeled Buggy</a></li>
-						        </ul>
-						      </li>
-        				</ul>
-        			</div>
-        		</div>
-        	</nav>
+             <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data target="#MyNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        
+                        
+                    <a class="navbar-brand" href="#">UPRM Moonbuggy Project Design <br/><i>Telemetry Department</i></a>
+                    <a class="navbar-right" href="#">
+                        <img src="graficas/Amanda/images/logoColegio.gif" height="80" width="75"></img>
+                        <img src="graficas/Amanda/images/LogoNasa.jpg" height="70" width="75"></img>
+                    </a>
+                    <a class="navbar-left" href="#">
+                        <img src="http://static.wixstatic.com/media/3a09a9_f28a18096e4f42c9acd87e87b352217e.png/v1/fill/w_208,h_181,al_c,usm_0.66_1.00_0.01/3a09a9_f28a18096e4f42c9acd87e87b352217e.png" height="80" width="75">
+                    </a>
+                    </div>
+                    <div class="collapse-navbar-collapse" id="MyNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Buggy's
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">3 Wheeled Buggy</a></li>
+                                    <li><a href="#">4 Wheeled Buggy</a></li>
+                                </ul>
+                              </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         
         </header>
-	</div>
-	
+    </div>
+
+    
 <!--Fecha, Hora,Bateria, Señal******-->
-	<div class="container-fluid" height= "15px">
-		<div class="row no-gutter">
-			
-		    <div class="col-md-2">
-		    	<p class="top-row">
-		    		Batería
-		    		<img src="graficas/Amanda/images/bateria.png" width="15px">
-		    	</p>
-		    </div>
-		    
-	        <div class="col-md-8" >
-			    <p class="top-row">
-			    	Fecha, Hora 
-			    	<img src="graficas/Amanda/images/reloj.png" width="15px">
-			    </p>
-			</div>
-			
-			<div class="col-md-2">
-				<p class="top-row">
-				    Señal
-				    <img src="graficas/Amanda/images/wifi.png" width="15px"></img>
-				</p>
-			</div>
-		</div>
-	</div>
-	
+    <div class="header-graphs" height= "15px">
+        <div class="row no-gutter">
+            
+            <div class="col-md-2">
+                <p class="top-row">
+                    Batería
+                    <img src="graficas/Amanda/images/bateria.png" width="15px">
+                </p>
+            </div>
+            
+            <div class="col-md-8" >
+                <p class="top-row">
+                    Fecha, Hora 
+                    <img src="graficas/Amanda/images/reloj.png" width="15px">
+                </p>
+            </div>
+            
+            <div class="col-md-2">
+                <p class="top-row">
+                    Señal
+                    <img src="graficas/Amanda/images/wifi.png" width="15px"></img>
+                </p>
+            </div>
+        </div>
+    </div>
+    
 <!--GPS, Camara, Buggy's************-->
-	<div class="container-fluid">
-	    <div class="row center-row no-gutter" height="500px">
-	        <div class="col-md-4">
-	         <div id="map"></div>
-	         
-    <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-      
-      //calling from php
-     
-	
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 18,
-          mapTypeId: 'satellite'
-        });
-        var infoWindow = new google.maps.InfoWindow({map: map});
+    <div class="container-fluid">
+        <div class="row center-row no-gutter" height="500px", width = 900px>
+            <div class="col-md-4">
+                 
+              <div class="centerOned" height = 50>
+                <!--camera-->
+                
+                <div class="center-rowCar" >
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        
+                        <ol class="carousel-indicators">
+                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                          <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+                    
+                      
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" height = "100">
+                          <div class="item active" alt = "First Slide">     
+                              <!--              
+                            <img src="http://static.wixstatic.com/media/3a09a9_f28a18096e4f42c9acd87e87b352217e.png/v1/fill/w_208,h_181,al_c,usm_0.66_1.00_0.01/3a09a9_f28a18096e4f42c9acd87e87b352217e.png" height="400" width="100" alt="First Slide">
+                              -->
+                              
+                        </div>
 
-            var pos = {
-            	//34.7111411,-86.6561125   Alabama space center
-            	//18.2127354,-67.1459692,18z	lado coliseo mangual
-              lat: 18.2127354,
-              lng: -67.1459692//our data from DB will be placed here
+                      
+                            <div class="item" alt = "Second Slide">
+
+                                <div class="col-md-6-carousel">
+                                    <div class="agile-Updating-grids">
+                                        <div class="area-grids-heading">
+                                            <h3>Strain</h3>
+                                        </div>
+                                        <div id="graph4" class="chart-size"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                      
+                          <div class="item" alt ="Third Slide">
+                            <div id="map" width = 300px></div>
              
-            };
+                            <script>
+                            // Note: This example requires that you consent to location sharing when
+                            // prompted by your browser. If you see the error "The Geolocation service
+                            // failed.", it means you probably did not give permission for the browser to
+                            // locate you.
+                        
+                            //calling from php
+                        
+                        
+                                function initMap() {
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                center: {lat: -34.397, lng: 150.644},
+                                zoom: 18,
+                                mapTypeId: 'satellite'
+                                });
+                                var infoWindow = new google.maps.InfoWindow({map: map});
+        
+                                    var pos = {
+                                        //34.7111411,-86.6561125   Alabama space center
+                                        //18.2127354,-67.1459692,18z    lado coliseo mangual
+                                    lat: 18.2127354,
+                                    lng: -67.1459692//our data from DB will be placed here
+                                    
+                                    };
+        
+                                    infoWindow.setPosition(pos);
+                                    infoWindow.setContent('Location found.');
+                                    map.setCenter(pos);
+                                }
+        
+                            </script>
+                            <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmHnOvHlAXqMjnAlCyIDUh32QkSMzRbME&callback=initMap">
+                            </script>
+                        
+                        </div>  
+                          </div>
+                        </div>
+                      
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!--        
+                    Camera
+                    <p><img src="graficas/Amanda/images/camara.jpg" width="250"></p>
+                    -->
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-      }
 
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmHnOvHlAXqMjnAlCyIDUh32QkSMzRbME&callback=initMap">
-    </script>
-	        	
-	        </div>
-	        
-	        	 
-	       <div class="col-md-4 col-sm-4 fluid">
-	        	<!--camera-->
-	        	
-	        	<div class="center-row" >
-	        		<video class="gif-video"  width = "700px" controls>
-	        			<source src="graficas/Amanda/images/nasaLaunch.mp4" type="video/mp4">
-	        			</video>
-	        		
-	        	<!--		
-	        		Camera
-	        		<p><img src="graficas/Amanda/images/camara.jpg" width="250"></p>
-	        		-->
-	        	</div>
-	        	
-	        </div>
-	        <div class="col-md-4 ">
-	        	Buggy's
-	        </div>
-	    </div>
-	    
-	</div>
-	
+    
 <!--Graphs**************************-->
-	<div class="container-fluid">
+    <div class="container-fluid">
         <div class = "row no-gutter">
-        	<div class="col-md-6">
-				<div class="agile-Updating-grids">
-						<div class="area-grids-heading">
-							<h3>Temperature & Humidity</h3>
-						</div>
-						<div id="graph1" class="chart-size" ></div>
-				</div>
-			</div>
-			<div class="col-md-6">
-					<div class="agile-Updating-grids">
-						<div class="area-grids-heading">
-							<h3>Vibrations on Wheels</h3>
-						</div>
-						<div id="graph2" class="chart-size"></div>
-					</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="container-fluid">
-		<div class="row no-gutter">
-				<div class="col-md-6
-				">
-					<div class="agile-Updating-grids">
-						<div class="area-grids-heading">
-							<h3>Torque</h3>
-						</div>
-						<div id="graph3" class="chart-size"></div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="agile-Updating-grids">
-						<div class="area-grids-heading">
-							<h3>Strain</h3>
-						</div>
-						<div id="graph4" class="chart-size"></div>
-					</div>
-				</div>
-		</div>
-	</div>
+            <div class="col-md-6">
+                <div class="agile-Updating-grids">
+                        <div class="area-grids-heading">
+                            <h3>Temperature & Humidity</h3>
+                        </div>
+                        <div id="graph1" class="chart-size" ></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                    <div class="agile-Updating-grids">
+                        <div class="area-grids-heading">
+                            <h3>Vibrations on Wheels</h3>
+                        </div>
+                        <div id="graph2" class="chart-size"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="container-fluid">
+        <div class="row no-gutter">
+                <div class="col-md-6">
+                    <div class="agile-Updating-grids">
+                        <div class="area-grids-heading">
+                            <h3>Torque</h3>
+                        </div>
+                        <div id="graph3" class="chart-size"></div>
+                    </div>
+                </div>
+        </div>
+    </div>
 
 <script>
-						var nReloads = 0;
-						function data(offset) {
-						  var dps = [];
-						  for (var x = 0; x <= 100; x ++) {
-							var v = (offset + x);
-							dps.push({
-							  x: x,
-							  y: Math.sin(Math.PI * v / 120).toFixed(4),
-							  z: Math.cos(Math.PI * v / 120).toFixed(4),
-							  w: 0,
-							  v: 0.5,
-							  t: -0.5,
-							  a: 0.7,
-							  
-							});
-							if (dps.length >  5 )
-					      	{
-					      		dps.shift();				
-					      	}
-						  }
-						  return dps;
-						}
-						/*global Morris*/
-						/*global $*/
-						var graph = Morris.Line({
-							element: 'graph1',
-							data: data(0),
-							xkey: 'x',
-							ykeys: ['y', 'z'],
-							labels: ['Temperatura', 'Humedad'],
-							parseTime: false,
-							ymin: -1,
-							ymax: 1,
-							hideHover: true
-						});
-						var graph2 = Morris.Line({
-							element: 'graph2',
-							data: data(0),
-							xkey: 'x',
-							ykeys: ['y', 'z', 'w','v'],
-							labels: ['Rueda1', 'Rueda2', 'Rueda3', 'Rueda4'],
-							parseTime: false,
-							ymin: -1,
-							ymax: 1,
-							hideHover: true
-						});
-						var graph3 = Morris.Line({
-							element: 'graph3',
-							data: data(0),
-							xkey: 'x',
-							ykeys: ['y', 'z', 'w', 'v','t','a'],
-							labels: ['1', '2','3','4','5','6'],
-							parseTime: false,
-							ymin: -1,
-							ymax: 1,
-							hideHover: true
-						});
-					
-						var graph4 = Morris.Line({
-							element: 'graph4',
-							data: data(0),
-							xkey: 'x',
-							ykeys: ['y', 'z', 'w', 'v'],
-							labels: ['1', '2','3','4'],
-							parseTime: false,
-							ymin: -1,
-							ymax: 1,
-							hideHover: true
-						});
-						function update() {
-						  nReloads++;
-						  graph.setData(data(5 * nReloads));
-						  graph2.setData(data(5 * nReloads));
-						  graph3.setData(data(5 * nReloads));
-						  graph4.setData(data(5 * nReloads));
-					
-						  $('#reloadStatus').text(nReloads + ' reloads');
-						}
-						setInterval(update, 10);
-			</script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/proton.js"></script>
-	
-	</div>
-	<!--Footer************************-->
-		<div class="footer"><strong> Sponsored by:
-		 <img src="graficas/Amanda/images/logoGM.png" height="30" width="30"></img>
-		 <img src="graficas/Amanda/images/ChevronLogo.png" height="30" width="30"></img>
-		 <img src="graficas/Amanda/images/logoBoeing.png" height="30" width="100"></img>
-		</div>
+                        var nReloads = 0;
+                        function data(offset) {
+                          var dps = [];
+                          for (var x = 0; x <= 100; x ++) {
+                            var v = (offset + x);
+                            dps.push({
+                              x: x,
+                              y: Math.sin(Math.PI * v / 120).toFixed(4),
+                              z: Math.cos(Math.PI * v / 120).toFixed(4),
+                              w: 0,
+                              v: 0.5,
+                              t: -0.5,
+                              a: 0.7,
+                              
+                            });
+                            if (dps.length >  5 )
+                            {
+                                dps.shift();                
+                            }
+                          }
+                          return dps;
+                        }
+                        /*global Morris*/
+                        /*global $*/
+                        var graph = Morris.Line({
+                            element: 'graph1',
+                            data: data(0),
+                            xkey: 'x',
+                            ykeys: ['y', 'z'],
+                            labels: ['Temperatura', 'Humedad'],
+                            parseTime: false,
+                            ymin: -1,
+                            ymax: 1,
+                            hideHover: true
+                        });
+                        var graph2 = Morris.Line({
+                            element: 'graph2',
+                            data: data(0),
+                            xkey: 'x',
+                            ykeys: ['y', 'z', 'w','v'],
+                            labels: ['Rueda1', 'Rueda2', 'Rueda3', 'Rueda4'],
+                            parseTime: false,
+                            ymin: -1,
+                            ymax: 1,
+                            hideHover: true
+                        });
+                        var graph3 = Morris.Line({
+                            element: 'graph3',
+                            data: data(0),
+                            xkey: 'x',
+                            ykeys: ['y', 'z', 'w', 'v','t','a'],
+                            labels: ['1', '2','3','4','5','6'],
+                            parseTime: false,
+                            ymin: -1,
+                            ymax: 1,
+                            hideHover: true
+                        });
+                    
+                        var graph4 = Morris.Line({
+                            element: 'graph4',
+                            data: data(0),
+                            xkey: 'x',
+                            ykeys: ['y', 'z', 'w', 'v'],
+                            labels: ['1', '2','3','4'],
+                            parseTime: false,
+                            ymin: -1,
+                            ymax: 1,
+                            hideHover: true
+                        });
+                        function update() {
+                          nReloads++;
+                          graph.setData(data(5 * nReloads));
+                          graph2.setData(data(5 * nReloads));
+                          graph3.setData(data(5 * nReloads));
+                          graph4.setData(data(5 * nReloads));
+                    
+                          $('#reloadStatus').text(nReloads + ' reloads');
+                        }
+                        setInterval(update, 10);
+            </script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/proton.js"></script>
+    
+    </div>
+    <!--Footer************************-->
+        <div class="footer"><strong> Sponsored by:
+         <img src="graficas/Amanda/images/logoGM.png" height="30" width="30"></img>
+         <img src="graficas/Amanda/images/ChevronLogo.png" height="30" width="30"></img>
+         <img src="graficas/Amanda/images/logoBoeing.png" height="30" width="100"></img>
+        </div>
 
-		
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
 </body>
 
 </html>
