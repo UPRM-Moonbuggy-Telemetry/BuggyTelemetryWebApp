@@ -132,15 +132,13 @@ export class BuggysComponent {
             }]
            },
         options: {
-          layout: {
-              // padding: {
-              //     left: 0,
-              //     right: 0,
-              //     top: 0,
-              //     bottom: 0
-              // }
-            }
+          animation: {
+            duration: 1
+            // Effectively, removes the animation from the polar area chat.
+            // Hopefully makes the refresh and data display seem more smooth
+            // and natural. 
           }
+        }
     });
 
     // Random data generators and limits.
