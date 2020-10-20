@@ -32,7 +32,6 @@ export class GpsComponent implements OnInit {
       this._dataService.getAllData().subscribe(
         data => {
           this.allData = data;
-          this._dataService.addData(data[0]);
           this.errors = null;
         },
         error => {
