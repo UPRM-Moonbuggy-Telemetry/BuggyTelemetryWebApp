@@ -28,15 +28,11 @@ export class BuggysComponent {
   }
 
   getStrainLeftData() {
-    var strain_1L = [];
-    var strain_2L = [];
-    var strain_3L = [];
-    for (let i = 0; i < this.allData.length; i++) {
-      strain_1L[i] = this.allData[i].strain_front_lft_1;
-      strain_2L[i] = this.allData[i].strain_front_lft_2;
-      strain_3L[i] = this.allData[i].strain_front_lft_3;
-    }
-    return [strain_1L, strain_2L, strain_3L];
+    var strain_1L = this.allData[0].strain_front_lft_1;
+    var strain_2L = this.allData[0].strain_front_lft_2;
+    var strain_3L = this.allData[0].strain_front_lft_3;
+
+    return (strain_1L + strain_2L + strain_3L) / 3;
   }
 
   // getStrainLeft2Data() {
@@ -56,15 +52,13 @@ export class BuggysComponent {
   // }
 
   getStrainRightData() {
-    var strain_1R = [];
-    var strain_2R = [];
-    var strain_3R = [];
-    for (let i = 0; i < this.allData.length; i++) {
-      strain_1R[i] = this.allData[i].strain_front_rt_1;
-      strain_2R[i] = this.allData[i].strain_front_rt_2;
-      strain_3R[i] = this.allData[i].strain_front_rt_3
-    }
-    return [strain_1R, strain_2R, strain_3R];
+
+    var strain_1R = this.allData[0].strain_front_rt_1;
+    var strain_2R = this.allData[0].strain_front_rt_2;
+    var strain_3R = this.allData[0].strain_front_rt_3;
+    
+    // Strain calculation placeholder (MUST CHANGE)
+    return (strain_1R + strain_2R + strain_3R) / 3;
   }
 
   // getStrainRight2Data() {
@@ -118,9 +112,14 @@ export class BuggysComponent {
     // });
     var strainCanvas = document.getElementById("strainGraph");
     
-    var randval = Math.floor(Math.random()*100);
-    var randval2 = Math.floor(Math.random()*100);
-    var randval3 = Math.floor(Math.random()*100);
+    // Randomized Data
+    // var randval = Math.floor(Math.random()*100);
+    // var randval2 = Math.floor(Math.random()*100);
+    // var randval3 = Math.floor(Math.random()*100);
+
+    var left = this.getStrainLeftData();
+    var right = this.getStrainRightData();
+    var center = this.getStrainCenterData();
 
     var polarAreaChart = new Chart(strainCanvas, {
         type: 'polarArea',
@@ -129,19 +128,17 @@ export class BuggysComponent {
             datasets: [{
               // backgroundColor: [ "blue", "red", "yellow" ],
               backgroundColor: [ "rgba(99, 221, 181, 1)", "rgba(239, 112, 97, 1)", "rgba(255, 212, 93, 1)" ],
-              data: [randval, randval2, randval3],
+              data: [left, right, center],
             }]
            },
         options: {
-          layout: {
-              // padding: {
-              //     left: 0,
-              //     right: 0,
-              //     top: 0,
-              //     bottom: 0
-              // }
-            }
+          animation: {
+            duration: 1
+            // Effectively, removes the animation from the polar area chat.
+            // Hopefully makes the refresh and data display seem more smooth
+            // and natural. 
           }
+        }
     });
 
     // Random data generators and limits.
