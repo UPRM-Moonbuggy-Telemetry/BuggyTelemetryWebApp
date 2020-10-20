@@ -2,6 +2,7 @@
 
 # environment variables
 src/api/config/setup_db_env.js
+src/assets/Pictures
 
 # compiled output
 /dist
