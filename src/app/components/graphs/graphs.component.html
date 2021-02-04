@@ -26,3 +26,97 @@
      </p>
   </div>
 </div>
+
+<!--
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+ 
+  <ol class="carousel-indicators">
+    <li data-target="#canvas" data-slide-to="0" class="active"></li>
+    <li data-target="#canvas2" data-slide-to="1"></li>
+    <li data-target="#canvas3" data-slide-to="2"></li>
+    <li data-target="#canvas4" data-slide-to="2"></li>
+  </ol>
+
+  
+  <div class="carousel-inner">
+    <div class="item active">
+      <p class="segment">
+        <b>Chart 1</b>
+        <canvas #canvas id="canvas">{{ chart }}</canvas>
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="segment">
+        <b>Chart 2</b>
+        <canvas #canvas2 id="canvas">{{ chart2 }}</canvas>
+      </p>
+    </div>
+
+    <div class="item">
+      <p class="segment">
+        <b>Chart 3</b>
+        <canvas #canvas3 id="canvas">{{ chart3 }}</canvas>
+      </p>
+    </div> 
+    <div class="item">
+      <p class="segment">
+        <b>Chart 4</b>
+        <canvas #canvas4 id="canvas">{{ chart4 }}</canvas>
+       </p>
+    </div>
+  </div>
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+-->
+<!--
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <b>Chart 1</b>
+        <canvas #canvas id="canvas">{{ chart }}</canvas>
+  </ng-template>
+  <ng-template ngbSlide>
+    <b>Chart 2</b>
+    <canvas #canvas2 id="canvas2">{{ chart2 }}</canvas>
+  </ng-template>
+</ngb-carousel>-->
+<!--
+<ngb-carousel
+[showNavigationArrows]="true" 
+[showNavigationIndicators]="true"
+interval="12000"
+[keyboard]="true"
+[pauseOnHover]="true"
+[wrap]="true"
+[activeId]="'secondSlide'"
+>
+  <ng-template ngbSlide id="firstSlide">
+    <div class="picsum-img-wrapper">
+      <p class="segment">
+        <b>Chart 1</b>
+        <canvas #canvas id="canvas">{{ chart }}</canvas>
+      </p>
+    </div>
+    <div class="carousel-caption">
+      <h3>Title Goes Here</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide id="secondSlide">
+    <div class="picsum-img-wrapper">
+      <img src="assets/img-02.jpeg" alt="Angular Carousel 2">
+    </div>
+    <div class="carousel-caption">
+      <h3>Title Goes Here</h3>
+      <p>Consectetur tortor volutpat pretium.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>-->

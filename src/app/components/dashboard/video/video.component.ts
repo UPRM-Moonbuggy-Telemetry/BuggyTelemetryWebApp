@@ -8,7 +8,7 @@ declare var JSMpeg: any;
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent implements OnInit {  
-  @ViewChild('video') video: ElementRef;
+  @ViewChild('video', { static: true }) video: ElementRef;
 
   ngOnInit(){
     var canvas = this.video.nativeElement;
