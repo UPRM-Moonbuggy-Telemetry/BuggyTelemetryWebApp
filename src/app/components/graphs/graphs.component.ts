@@ -9,10 +9,11 @@ import {Chart} from 'chart.js';
 })
 
 export class GraphsComponent implements OnInit {
-  @ViewChild('canvas', { static: true }) canvas: ElementRef;
-  @ViewChild('canvas2', { static: true }) canvas2: ElementRef;
-  @ViewChild('canvas3', { static: true }) canvas3: ElementRef;
-  @ViewChild('canvas4', { static: true }) canvas4: ElementRef;
+  //Changed from static: true to false. Verify later just for precaution.LFQR
+  @ViewChild('canvas', { static: false }) canvas: ElementRef;
+  @ViewChild('canvas2', { static: false }) canvas2: ElementRef;
+  @ViewChild('canvas3', { static: false }) canvas3: ElementRef;
+  @ViewChild('canvas4', { static: false }) canvas4: ElementRef;
 
   allData = []; // DB most recent data
   chart = []; // This will hold our chart1 info, frontal strain
