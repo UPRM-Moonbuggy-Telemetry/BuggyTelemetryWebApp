@@ -1,7 +1,11 @@
 .space{
-  padding-right: 200px;
+  /* padding-right: 200px; */
 }
 
 .full-width{
   width: 100%;
+}
+
+.dashboard{
+  background-color: #c04040;
 }

@@ -1,27 +1,25 @@
-  <div class="row full-width">
-    <div class="col-4 position-relative" id="gps">
+<!-- <div class="row full-width"> -->
+<div class="dashboard">
+  <div class="row d-flex justify-content-center" >
+    <!-- <div class="col-4 " id="gps"> -->
+      <!-- gps -->
+    <div class="col-sm" id="gps">
       <div>
         <app-gps></app-gps>
       </div>
     </div>
-
-    <div class="position-absolute" id="speedometer">
-      <div>
-        <app-speedometer></app-speedometer>
-      </div>
-    </div>
-
-
-    <div class="space col-md-4" id="video">
+    <!-- <div class="space col-md-4" id="video"> -->
+    <!-- video -->
+    <div class="col-sm" id="video"> 
       <div>
         <app-video></app-video>
       </div>
     </div>
-
-    <div class="col-4 position-relative" id="picture">
-      <div>
-        <app-buggys></app-buggys>
-      </div>
+      <!-- speedometer -->
+    <div class="col-sm" id="speedometer">
+        <div>
+          <app-speedometer></app-speedometer>
+        </div>
     </div>
-
   </div>
+</div>
