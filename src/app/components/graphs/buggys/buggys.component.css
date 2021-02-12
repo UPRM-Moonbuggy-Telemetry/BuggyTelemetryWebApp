@@ -1,7 +1,7 @@
-html,
+/* html,
 body {
   margin: 0;
-}
+} */
 
 /* #canvas{
   width:250px;
@@ -22,7 +22,12 @@ body {
   text-align: right;
 } */ 
 
-#chart {
+/* #chart {
   height: 200px;
   width: 200px;
+}  */
+
+#strainGraph {
+  background-position: center center;
+  min-height: 21.36vh !important;
 }

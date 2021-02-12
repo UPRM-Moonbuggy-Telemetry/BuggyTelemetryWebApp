@@ -29,41 +29,33 @@
 </div>
 -->
 
-<div class="row d-flex justify-content-center">
-  <div class="col-md-6">
-    <ngb-carousel
-    [showNavigationArrows]="true" 
-    [showNavigationIndicators]="true"
-    interval="5000"
-    [keyboard]="true"
-    [pauseOnHover]="true"
-    [wrap]="true"
-    [activeId]="'secondSlide'"
-    >
-      <ng-template ngbSlide>
-        <div class="segment">
-          <b>Chart 1</b>
-          <canvas #canvas id="canvas" alt="Angular Carousel 1">{{chart}}</canvas>
+<div class="row justify-content-center">
+    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+          <canvas #canvas id="canvas" alt="First slide">{{chart}}</canvas>
         </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="segment">
-          <b>Chart 2</b>
-          <canvas #canvas2 id="canvas" alt="Angular Carousel 2">{{chart2}}</canvas>
+        <div class="carousel-item">
+          <canvas #canvas2 id="canvas" alt="Second slide">{{chart2}}</canvas>
         </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="segment">
-          <b>Chart 3</b>
-          <canvas #canvas3 id="canvas" alt="Angular Carousel 3">{{chart3}}</canvas>
+        <div class="carousel-item">
+          <canvas #canvas3 id="canvas" alt="Third slide">{{chart3}}</canvas>
         </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="segment">
-          <b>Chart 4</b>
-          <canvas #canvas4 id="canvas" alt="Angular Carousel 4">{{chart4}}</canvas>
+        <div class="carousel-item">
+          <canvas #canvas4 id="canvas" alt="Fourth slide">{{chart4}}</canvas>
         </div>
-      </ng-template>
-    </ngb-carousel>
-  </div>
+        <div class="carousel-item">
+            <app-buggys></app-buggys>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
 </div>
