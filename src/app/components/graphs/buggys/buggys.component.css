@@ -22,12 +22,11 @@ body {
   text-align: right;
 } */ 
 
-/* #chart {
-  height: 200px;
-  width: 200px;
-}  */
+#chart {
+  height: 300px;
+  width: 300px;
+} 
 
-#strainGraph {
-  background-position: center center;
-  min-height: 21.36vh !important;
+#buggy{
+  height: 27.5rem;
 }

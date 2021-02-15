@@ -1,20 +1,40 @@
 <div class="row">
-    <div id="carouselControls" class="card carousel slide mr-3" data-ride="carousel">
+    <div id="carouselControls" class="carousel slide mr-3 full-width " data-ride="carousel">
         <div class="carousel-inner">
         <div class="carousel-item active">
-          <canvas #canvas id="canvas" alt="First slide" class="card">{{chart}}</canvas>
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas alt="First slide" >{{chart}}</canvas>
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
-          <canvas #canvas2 id="canvas" alt="Second slide" class="card">{{chart2}}</canvas>
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas2 alt="Second slide" >{{chart2}}</canvas>
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
-          <canvas #canvas3 id="canvas" alt="Third slide" class="card">{{chart3}}</canvas>
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas3 alt="Third slide" >{{chart3}}</canvas>
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
-          <canvas #canvas4 id="canvas" alt="Fourth slide" class="card">{{chart4}}</canvas>
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas4 alt="Fourth slide" >{{chart4}}</canvas>
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
-            <app-buggys></app-buggys>
+          <div class="row justify-content-center">
+            <div class="card">
+              <app-buggys></app-buggys>
+            </div>
+          </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
@@ -26,5 +46,4 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
 </div>
