@@ -2,10 +2,10 @@
       padding-top: 15px;
       padding-bottom: 15px;
       padding-left: 15px;
-      background-color: #8d1717;
+      background-color: white;
       /* border-radius: 15px; */
       border-style: double;
-      border-color: #8d1717;
+      border-color: white;
     }
 
     .navbar-right{
@@ -30,7 +30,7 @@
     }*/
 
     .navbar a:hover, .dropdown:hover .dropbtn {
-        background-color: red;
+        background-color: #3cbbce;
     }
 
     .dropdown-content {

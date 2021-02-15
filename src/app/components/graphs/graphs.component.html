@@ -1,48 +1,17 @@
-<!--
 <div class="row">
-  <div class="col-xl-6" id="ch1">
-      <p class="segment">
-        <b>Chart 1</b>
-        <canvas #canvas id="canvas">{{ chart }}</canvas>
-      </p>
-  </div>
-
-  <div class="col-xl-6" id="ch2">
-    <p class="segment">
-      <b>Chart 2</b>
-      <canvas #canvas2 id="canvas">{{ chart2 }}</canvas>
-    </p>
-  </div>
-
-  <div class="col-xl-6" id="ch3">
-    <p class="segment">
-      <b>Chart 3</b>
-      <canvas #canvas3 id="canvas">{{ chart3 }}</canvas>
-    </p>
-  </div>
-  <div class="col-xl-6" id="ch4">
-    <p class="segment">
-      <b>Chart 4</b>
-      <canvas #canvas4 id="canvas">{{ chart4 }}</canvas>
-     </p>
-  </div>
-</div>
--->
-
-<div class="row justify-content-center">
-    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselControls" class="card carousel slide mr-3" data-ride="carousel">
         <div class="carousel-inner">
         <div class="carousel-item active">
-          <canvas #canvas id="canvas" alt="First slide">{{chart}}</canvas>
+          <canvas #canvas id="canvas" alt="First slide" class="card">{{chart}}</canvas>
         </div>
         <div class="carousel-item">
-          <canvas #canvas2 id="canvas" alt="Second slide">{{chart2}}</canvas>
+          <canvas #canvas2 id="canvas" alt="Second slide" class="card">{{chart2}}</canvas>
         </div>
         <div class="carousel-item">
-          <canvas #canvas3 id="canvas" alt="Third slide">{{chart3}}</canvas>
+          <canvas #canvas3 id="canvas" alt="Third slide" class="card">{{chart3}}</canvas>
         </div>
         <div class="carousel-item">
-          <canvas #canvas4 id="canvas" alt="Fourth slide">{{chart4}}</canvas>
+          <canvas #canvas4 id="canvas" alt="Fourth slide" class="card">{{chart4}}</canvas>
         </div>
         <div class="carousel-item">
             <app-buggys></app-buggys>

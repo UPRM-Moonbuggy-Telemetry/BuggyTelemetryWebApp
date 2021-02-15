@@ -1,5 +1,11 @@
 #speed-gauge{
     /* position: relative; */
-    /* left: 685px;
-    top: 250px; */
+    left: auto;
+    top: auto; 
+}
+
+canvas{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
 }
