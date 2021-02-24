@@ -35,42 +35,42 @@ export class BuggysComponent {
 
   }
 
-  getStrainLeftData() {
+  getStrainCenterFront() {
     if(this.errors == null) { // if connected, call DB data
-      var strain_1L = this.allData[0].strain_front_lft_1;
-      var strain_2L = this.allData[0].strain_front_lft_2;
-      var strain_3L = this.allData[0].strain_front_lft_3;
+      var strain_1 = this.allData[0].strain_center_front_1;
+      var strain_2 = this.allData[0].strain_center_front_2;
+      var strain_3 = this.allData[0].strain_center_front_3;
   
       // Strain calculation placeholder (MUST CHANGE)
-      return (strain_1L + strain_2L + strain_3L) / 3;
+      return (strain_1 + strain_2 + strain_3) / 3;
     }
     else { // if disconnected, return a randomized value
       return Math.floor(Math.random()*100);
     }
   }
 
-  getStrainRightData() { // if connected, call DB data
+  getStrainCenterBack() { // if connected, call DB data
     if(this.errors == null) {
-      var strain_1R = this.allData[0].strain_front_rt_1;
-      var strain_2R = this.allData[0].strain_front_rt_2;
-      var strain_3R = this.allData[0].strain_front_rt_3;
+      var strain_1 = this.allData[0].strain_center_back_1;
+      var strain_2 = this.allData[0].strain_center_back_2;
+      var strain_3 = this.allData[0].strain_center_back_3;
       
       // Strain calculation placeholder (MUST CHANGE)
-      return (strain_1R + strain_2R + strain_3R) / 3;
+      return (strain_1 + strain_2 + strain_3) / 3;
     }
     else { // if disconnected, return a randomized value
       return Math.floor(Math.random()*100);
     }
   }
 
-  getStrainCenterData() {
+  getStrainBackseat() {
     if(this.errors == null) { // if connected, call DB data
-      var strain_1C = this.allData[0].strain_center_1;
-      var strain_2C = this.allData[0].strain_center_2;
-      var strain_3C = this.allData[0].strain_center_3;
+      var strain_1 = this.allData[0].strain_backseat_1;
+      var strain_2 = this.allData[0].strain_backseat_2;
+      var strain_3 = this.allData[0].strain_backseat_3;
       
       // Strain calculation placeholder (MUST CHANGE)
-      return (strain_1C + strain_2C + strain_3C) / 3;
+      return (strain_1 + strain_2 + strain_3) / 3;
     }
     else { // if disconnected, return a randomized value
       return Math.floor(Math.random()*100);
@@ -81,17 +81,17 @@ export class BuggysComponent {
 
     var strainCanvas = document.getElementById("strainGraph");
     
-    var left = this.getStrainLeftData();
-    var right = this.getStrainRightData();
-    var center = this.getStrainCenterData();
+    var center_front = this.getStrainCenterFront();
+    var center_back = this.getStrainCenterBack();
+    var backseat = this.getStrainBackseat();
 
     var polarAreaChart = new Chart(strainCanvas, {
         type: 'polarArea',
         data: {
-            labels: ["Left Strain","Right Strain","Center Strain"],
+            labels: ["Center-Front Strain","Center-Back Strain","Backseat Strain"],
             datasets: [{
               backgroundColor: [ "rgba(99, 221, 181, 1)", "rgba(239, 112, 97, 1)", "rgba(255, 212, 93, 1)" ],
-              data: [left, right, center],
+              data: [center_front, center_back, backseat],
             }]
            },
         options: {

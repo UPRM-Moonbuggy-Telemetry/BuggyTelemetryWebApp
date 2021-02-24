@@ -2,7 +2,9 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
-const dataRoutes = require('./api/routes/dataRoutes');//importing routes
+// const dataRoutes = require('./api/routes/dataRoutes');
+const newRoverRoutes = require('./api/routes/newRoverRoutes');
+const oldRoverRoutes = require('./api/routes/oldRoverRoutes');
 const setup_db_env = require('./api/config/setup_db_env');
 
 // setup database environment variables
@@ -28,7 +30,8 @@ app.use(function(req, res, next) {
 });
 
 //register the routes
-dataRoutes(app);
+newRoverRoutes(app);
+oldRoverRoutes(app);
 
 //////////////////////////////////////////
 //send angular file to path (has to be built first with ng build)
