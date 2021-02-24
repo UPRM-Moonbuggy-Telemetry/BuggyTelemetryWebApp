@@ -1,28 +1,49 @@
 <div class="row">
-  <div class="col-xl-6" id="ch1">
-      <p class="segment">
-        <b>Chart 1</b>
-        <canvas #canvas id="canvas">{{ chart }}</canvas>
-      </p>
-  </div>
-
-  <div class="col-xl-6" id="ch2">
-    <p class="segment">
-      <b>Chart 2</b>
-      <canvas #canvas2 id="canvas">{{ chart2 }}</canvas>
-    </p>
-  </div>
-
-  <div class="col-xl-6" id="ch3">
-    <p class="segment">
-      <b>Chart 3</b>
-      <canvas #canvas3 id="canvas">{{ chart3 }}</canvas>
-    </p>
-  </div>
-  <div class="col-xl-6" id="ch4">
-    <p class="segment">
-      <b>Chart 4</b>
-      <canvas #canvas4 id="canvas">{{ chart4 }}</canvas>
-     </p>
-  </div>
+    <div id="carouselControls" class="carousel slide mr-3 full-width " data-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas alt="First slide" >{{chart}}</canvas>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas2 alt="Second slide" >{{chart2}}</canvas>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas3 alt="Third slide" >{{chart3}}</canvas>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="card">
+              <canvas #canvas4 alt="Fourth slide" >{{chart4}}</canvas>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="card">
+              <app-buggys></app-buggys>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 </div>
