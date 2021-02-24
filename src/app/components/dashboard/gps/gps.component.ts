@@ -15,6 +15,7 @@ export class GpsComponent implements OnInit {
 
   map: Map = [];
   allData = [];
+  errors = null;
 
   constructor(private _dataService: DataService) { }
 
@@ -28,18 +29,26 @@ export class GpsComponent implements OnInit {
     });
 
     setInterval(() => {
-      this._dataService.getAllData().subscribe(data => {
-        this.allData = data;
-      });
+      this._dataService.getAllData().subscribe(
+        data => {
+          this.allData = data;
+          this.errors = null;
+        },
+        error => {
+          this.errors = error;
+        }
+      );
     }, 1000);
-
-    // setInterval(() => {
-    //   this.map.refresh({x: this.allData[0].latitude, y: this.allData[0].longitude}) ;
-    //   }, 1000);
 
     setInterval(() => {
-      this.map.refresh({x: getRndNumber(34.709558, 34.711180), y: getRndNumber(-86.655645, -86.652185)});
+      if(this.errors==null) {
+        this.map.refresh({x: this.allData[0].latitude, y: this.allData[0].longitude});
+      }
+      else {
+        this.map.refresh({x: getRndNumber(34.709558, 34.711180), y: getRndNumber(-86.655645, -86.652185)});
+      }
     }, 1000);
+
   }
 
 }

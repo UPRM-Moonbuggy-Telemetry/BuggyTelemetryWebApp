@@ -1,5 +1,5 @@
 #speed-gauge{
-    position: relative;
-    left: 685px;
-    top: 250px;
+    position: absolute;
+    left: 600px;
+    top: 150px;
 }

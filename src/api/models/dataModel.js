@@ -9,48 +9,107 @@ db.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-const Buggy = db.define('buggy', {
-  name: {
-    type: Sequelize.STRING(15),
+// const Buggy = db.define('buggy', {
+//   name: {
+//     type: Sequelize.STRING(15),
+//   }
+// }, {
+//   underscored: true,
+//   freezeTableName: true,
+// });
+
+const OldRover = db.define('old_rover', {
+  strain_center_front_1: {
+    type: Sequelize.INTEGER
+  },
+  strain_center_front_2: {
+    type: Sequelize.INTEGER
+  },
+  strain_center_front_3: {
+    type: Sequelize.INTEGER
+  },
+  strain_center_back_1: {
+    type: Sequelize.INTEGER
+  },
+  strain_center_back_2: {
+    type: Sequelize.INTEGER
+  },
+  strain_center_back_3: {
+    type: Sequelize.INTEGER
+  },
+  strain_frontseat_1: {
+    type: Sequelize.INTEGER
+  },
+  strain_frontseat_2: {
+    type: Sequelize.INTEGER
+  },
+  strain_frontseat_3: {
+    type: Sequelize.INTEGER
+  },
+  vibration_backseat_top: {
+    type: Sequelize.INTEGER
+  },
+  vibration_backseat_bottom: {
+    type: Sequelize.INTEGER
+  },
+  vibration_front_right: {
+    type: Sequelize.INTEGER
+  },
+  vibration_front_left: {
+    type: Sequelize.INTEGER
+  },
+  battery_status: {
+    type: Sequelize.INTEGER
+  },
+  latitude: {
+    type: Sequelize.FLOAT
+  },
+  longitude: {
+    type: Sequelize.FLOAT
+  },
+  OBC_time: {
+    type: Sequelize.STRING
+  },
+  OBC_date: {
+    type: Sequelize.STRING
+  },
+  GSC_time: {
+    type: Sequelize.STRING
+  },
+  GSC_date: {
+    type: Sequelize.STRING
   }
 }, {
   underscored: true,
-  freezeTableName: true,
+  freezeTableName: true
 });
 
-const Data = db.define('data', {
-  buggyId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: 'buggy',
-      key: 'id'
-    }
-  },
-  strain_front_lft_1: {
+const NewRover = db.define('new_rover', {
+  strain_center_front_1: {
     type: Sequelize.INTEGER
   },
-  strain_front_lft_2: {
+  strain_center_front_2: {
     type: Sequelize.INTEGER
   },
-  strain_front_lft_3: {
+  strain_center_front_3: {
     type: Sequelize.INTEGER
   },
-  strain_front_rt_1: {
+  strain_center_back_1: {
     type: Sequelize.INTEGER
   },
-  strain_front_rt_2: {
+  strain_center_back_2: {
     type: Sequelize.INTEGER
   },
-  strain_front_rt_3: {
+  strain_center_back_3: {
     type: Sequelize.INTEGER
   },
-  strain_center_1: {
+  strain_backseat_1: {
     type: Sequelize.INTEGER
   },
-  strain_center_2: {
+  strain_backseat_2: {
     type: Sequelize.INTEGER
   },
-  strain_center_3: {
+  strain_backseat_3: {
     type: Sequelize.INTEGER
   },
   vibration_front_lft: {
@@ -65,7 +124,7 @@ const Data = db.define('data', {
   vibration_rear_rt: {
     type: Sequelize.INTEGER
   },
-  vibration_center: {
+  vibration_center_back: {
     type: Sequelize.INTEGER
   },
   battery_status: {
@@ -77,16 +136,16 @@ const Data = db.define('data', {
   longitude: {
     type: Sequelize.FLOAT
   },
-  GSC_time: {
-    type: Sequelize.STRING
-  },
-  GSC_date: {
-    type: Sequelize.STRING
-  },
   OBC_time: {
     type: Sequelize.STRING
   },
   OBC_date: {
+    type: Sequelize.STRING
+  },
+  GSC_time: {
+    type: Sequelize.STRING
+  },
+  GSC_date: {
     type: Sequelize.STRING
   }
 }, {
@@ -94,47 +153,47 @@ const Data = db.define('data', {
   freezeTableName: true
 });
 
-Buggy.hasMany(Data, {foreignKey: 'buggyId'});
-Data.belongsTo(Buggy, {foreignKey: 'buggyId'});
+// Buggy.hasMany(Data, {foreignKey: 'buggyId'});
+// Data.belongsTo(Buggy, {foreignKey: 'buggyId'});
 
-const values = [
-  {
-    'name': 'NewBuggy'
-  },
-  {
-    'name': 'OldBuggy'
-  }
-];
+// const values = [
+//   {
+//     'name': 'NewBuggy'
+//   },
+//   {
+//     'name': 'OldBuggy'
+//   }
+// ];
 
 
 /**
  * This function creates the table with the specified parameters
  */
-const createTableBuggy = () => {
-  // Find the correct way to create table values.
-  Buggy.sync().then(() => {
-    console.log("Buggy table created successfully");
-    Buggy.bulkCreate(values);
-  });
-};
+// const createTableBuggy = () => {
+//   // Find the correct way to create table values.
+//   Buggy.sync().then(() => {
+//     console.log("Buggy table created successfully");
+//     Buggy.bulkCreate(values);
+//   });
+// };
 
-const createTableData = () => {
-  Data.sync().then(() => {
-    console.log("Data table created successfully");
-  });
-};
+// const createTableData = () => {
+//   Data.sync().then(() => {
+//     console.log("Data table created successfully");
+//   });
+// };
 
-const dropTableData = () => {
-  Data.drop().then(() => {
-    console.log("Data table dropped successfully");
-  });
-};
+// const dropTableData = () => {
+//   Data.drop().then(() => {
+//     console.log("Data table dropped successfully");
+//   });
+// };
 
-const dropTableBuggy = () => {
-  Buggy.drop().then(() => {
-    console.log("Buggy table dropped successfully");
-  });
-};
+// const dropTableBuggy = () => {
+//   Buggy.drop().then(() => {
+//     console.log("Buggy table dropped successfully");
+//   });
+// };
 
 /**
  * This function create both tables, is assumed that they don't exist
@@ -145,8 +204,8 @@ const dropTableBuggy = () => {
 const create = () => {
   db.sync({ force: true })
     .then(() => {
-      Buggy.bulkCreate(values);
-      Buggy.sync();
+      OldRover.sync();
+      NewRover.sync();
     });
 };
 
@@ -174,8 +233,8 @@ module.exports = {
   create,
   reset,
   drop,
-  Buggy,
-  Data,
+  OldRover,
+  NewRover
 };
 
 /**
