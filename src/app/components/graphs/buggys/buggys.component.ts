@@ -12,8 +12,7 @@ export class BuggysComponent {
   errors = null;
 
   constructor(private _dataService: DataService) {}
-
-  @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild('canvas5', { static: false }) canvas5: ElementRef;
 
   ngOnInit() {
 

@@ -8,7 +8,7 @@ import {DataService} from '../../../data.service';
 })
 export class SpeedometerComponent implements OnInit {
 
-  @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
 
   speed = 0.0;
 

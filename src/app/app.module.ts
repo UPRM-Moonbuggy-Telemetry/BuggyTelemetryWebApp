@@ -14,9 +14,10 @@ import { StatusBarComponent } from './components/status-bar/status-bar.component
 import { BatteryComponent } from './components/status-bar/battery/battery.component';
 import { DateComponent } from './components/status-bar/date/date.component';
 import { SignalComponent } from './components/status-bar/signal/signal.component';
-import { BuggysComponent } from './components/dashboard/buggys/buggys.component';
+import { BuggysComponent } from './components/graphs/buggys/buggys.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlternateGpsComponent } from './components/dashboard/alternate-gps/alternate-gps.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {GaugesModule} from 'ng-canvas-gauges';
 import { SpeedometerComponent } from './components/dashboard/speedometer/speedometer.component';
@@ -42,7 +43,8 @@ import { SpeedometerComponent } from './components/dashboard/speedometer/speedom
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    GaugesModule
+    GaugesModule,
+    NgbModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

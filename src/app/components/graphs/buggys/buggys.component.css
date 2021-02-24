@@ -1,7 +1,7 @@
-html,
+/* html,
 body {
   margin: 0;
-}
+} */
 
 /* #canvas{
   width:250px;
@@ -23,6 +23,10 @@ body {
 } */ 
 
 #chart {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
+} 
+
+#buggy{
+  height: 27.5rem;
 }

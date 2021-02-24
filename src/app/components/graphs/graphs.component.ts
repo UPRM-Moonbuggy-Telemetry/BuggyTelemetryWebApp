@@ -9,10 +9,10 @@ import {Chart} from 'chart.js';
 })
 
 export class GraphsComponent implements OnInit {
-  @ViewChild('canvas') canvas: ElementRef;
-  @ViewChild('canvas2') canvas2: ElementRef;
-  @ViewChild('canvas3') canvas3: ElementRef;
-  @ViewChild('canvas4') canvas4: ElementRef;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef;
+  @ViewChild('canvas2', { static: true }) canvas2: ElementRef;
+  @ViewChild('canvas3', { static: true }) canvas3: ElementRef;
+  @ViewChild('canvas4', { static: true }) canvas4: ElementRef;
 
   allData = []; // DB most recent data
   chart = []; // This will hold our chart1 info, frontal strain

@@ -1,7 +1,8 @@
 .top-row{
     background-color: #778899;
     text-align: center;
-    padding:5px;
+    padding-top: 12px;
+    padding-bottom: 1px;
 }
 
 .full-width{
