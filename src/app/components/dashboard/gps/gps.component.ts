@@ -9,9 +9,9 @@ import {DataService} from '../../../data.service';
 })
 export class GpsComponent implements OnInit {
 
-  @ViewChild('parent') parent: ElementRef;
-  @ViewChild('element') element: ElementRef;
-  @ViewChild('container') container: ElementRef;
+  @ViewChild('parent', { static: true }) parent: ElementRef;
+  @ViewChild('element', { static: true }) element: ElementRef;
+  @ViewChild('container', { static: true }) container: ElementRef;
 
   map: Map = [];
   allData = [];

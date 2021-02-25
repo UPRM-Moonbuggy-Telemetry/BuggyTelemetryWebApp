@@ -1,23 +1,27 @@
-<div id="navbar">
-  <router-outlet></router-outlet>
-</div>
+<div class="app">
+  <div id="navbar">
+    <router-outlet></router-outlet>
+  </div>
 
-<div id="status-bar">
-  <app-status-bar></app-status-bar>
-</div>
+  <div id="status-bar">
+    <app-status-bar></app-status-bar>
+  </div>
 
-<div class="container-fluid">
-  <div class="row full-width" id="dashboard">
-    <div class="col">
-      <app-dashboard></app-dashboard>
+  <div class="container-fluid">
+    <div class="row full-width" id="dashboard">
+      <div class="col">
+        <app-dashboard></app-dashboard>
+      </div>
+    </div>
+
+    <div class="row full-width justify-content-center" id="graphs">
+      <div class="col-xl justify-content-center">
+      <app-graphs></app-graphs>
+    </div>
     </div>
   </div>
 
-  <div class="row full-width" id="graphs">
-    <app-graphs></app-graphs>
+  <div id="footer">
+    <app-footer></app-footer>
   </div>
-</div>
-
-<div id="footer">
-  <app-footer></app-footer>
 </div>
