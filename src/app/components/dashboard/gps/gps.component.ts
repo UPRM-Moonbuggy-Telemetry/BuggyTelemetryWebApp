@@ -1,6 +1,8 @@
+/// <reference types="@types/google.maps" />
+
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { Map, getRndNumber } from '@jaortiz117/icon-map';
 import {DataService} from '../../../data.service';
+import { Loader } from "@googlemaps/js-api-loader";
 
 @Component({
   selector: 'app-gps',
@@ -9,23 +11,39 @@ import {DataService} from '../../../data.service';
 })
 export class GpsComponent implements OnInit {
 
-  @ViewChild('parent', { static: true }) parent: ElementRef;
-  @ViewChild('element', { static: true }) element: ElementRef;
-  @ViewChild('container', { static: true }) container: ElementRef;
+  @ViewChild('map', { static: true }) mapElement: ElementRef;
 
-  map: Map = [];
   allData = [];
   errors = null;
+  map: google.maps.Map;
+  infoWindow: google.maps.InfoWindow;
+  marker: google.maps.Marker;
 
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
-    this.map = new Map(this.parent.nativeElement, this.element.nativeElement, {
-      top: -86.652185,
-      bottom: -86.655645
-    }, {
-      top: 34.711180,
-      bottom: 34.709558
+
+    var pos = {
+      lat: 18.2127354,
+      lng: -67.1459692
+    }
+
+    const loader = new Loader({
+      apiKey: "AIzaSyDk0ypYwZ2kZYe8wQjA2VsZT72Tg5A6FCU",
+      version: "weekly",
+    });
+    
+    loader.load().then(() => {
+      this.map = new google.maps.Map(this.mapElement.nativeElement, {
+        center: pos,
+        zoom: 18,
+        mapTypeId: 'satellite'
+      });
+      this.marker = new google.maps.Marker({
+        position: pos,
+        map: this.map,
+      });
+      this.infoWindow = new google.maps.InfoWindow({content: 'Location found.', position: pos});
     });
 
     setInterval(() => {
@@ -41,14 +59,20 @@ export class GpsComponent implements OnInit {
     }, 1000);
 
     setInterval(() => {
-      if(this.errors==null) {
-        this.map.refresh({x: this.allData[0].latitude, y: this.allData[0].longitude});
+      if(this.errors==null) { // this is not refreshing; must check for errors (or try it without the 'if')
+        this.refreshMap({lat: this.allData[0].latitude, lng: this.allData[0].longitude});
       }
       else {
-        this.map.refresh({x: getRndNumber(34.709558, 34.711180), y: getRndNumber(-86.655645, -86.652185)});
-      }
+        this.refreshMap({lat: 18.2127354, lng: -67.1459692});
+      };
     }, 1000);
 
+  }
+
+  refreshMap(position) {
+    this.map.setCenter(position);
+    this.marker.setPosition(position);
+    this.infoWindow.setPosition(position);
   }
 
 }
