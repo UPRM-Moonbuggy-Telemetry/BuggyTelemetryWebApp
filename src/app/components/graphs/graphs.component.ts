@@ -73,19 +73,19 @@ export class GraphsComponent implements OnInit {
   }
 
   getVibrationData(){
-    var vibration1 = this.allData[0].vibration_front_lft; // front-left
-    var vibration2 = this.allData[0].vibration_front_rt; // front-right
-    var vibration3 = this.allData[0].vibration_rear_lft; // rear-left
-    var vibration4 = this.allData[0].vibration_rear_rt; // rear-right
-    var vibration5 = this.allData[0].vibration_center_back; // center-back
+    var vibration1 =[]; // front-left
+    var vibration2 =[]; // front-right
+    var vibration3 =[]; // rear-left
+    var vibration4 =[]; // rear-right
+    var vibration5 =[]; // center-back
 
-    // for(let i=0; i<this.allData.length; i++){
-    //   vibration1[i] = this.allData[i].vibration_front_lft;
-    //   vibration2[i] = this.allData[i].vibration_front_rt;
-    //   vibration3[i] = this.allData[i].vibration_rear_lft;
-    //   vibration4[i] = this.allData[i].vibration_rear_rt;
-    //   vibration5[i] = this.allData[i].vibration_center_back;
-    // }
+    for(let i=0; i<this.allData.length; i++){
+      vibration1[i] = this.allData[i].vibration_front_lft;
+      vibration2[i] = this.allData[i].vibration_front_rt;
+      vibration3[i] = this.allData[i].vibration_rear_lft;
+      vibration4[i] = this.allData[i].vibration_rear_rt;
+      vibration5[i] = this.allData[i].vibration_center_back;
+    }
     return [vibration1, vibration2, vibration3, vibration4, vibration5];
   }
 
