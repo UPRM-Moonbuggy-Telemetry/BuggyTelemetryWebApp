@@ -26,7 +26,7 @@
     "core-js": "^2.6.9",
     "heatmap.js": "^2.0.5",
     "jquery": "^3.5.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "make-runnable": "^1.3.8",
     "mysql": "^2.16.0",
     "ng-canvas-gauges": "^6.0.4",
